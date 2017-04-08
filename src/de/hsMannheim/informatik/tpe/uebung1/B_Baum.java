@@ -1,7 +1,5 @@
 package de.hsMannheim.informatik.tpe.uebung1;
 
-import TPESchramm.BTree;
-
 public interface B_Baum {
 	
 	boolean insert (int o);
