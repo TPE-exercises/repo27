@@ -6,14 +6,21 @@ import java.util.Arrays;
 
 public class BTreeMenu {
 	
-	 BTree la[] = new BTree[0];  // BTre with orderx
-	 BTree lb[] = new BTree[0];  // BTre with orderx
-	 
+	static BTree original; 
+	static BTree tree; 
+	static BTree otherTree;
+	
+	
 	public static void main(String[] args) {
+		println("Please set order");
+		int order = readInt();
 		
-		for (int i = 0; i < la.length; i++){
-			la[i] = new B_Tree(i);
-		}
+		tree = new B_Tree(order);  // BTre with orderx
+		otherTree = new B_Tree(order);  // BTre with orderx
+		
+//		for (int i = 0; i < la.length; i++){
+//			la[i] = new B_Tree(i);
+//		}
 
 		while (true) {
 			makeMenu();
@@ -23,9 +30,9 @@ public class BTreeMenu {
 	public static void makeMenu() {
 
 		int wl = 0; // working list per default
-
+		
 		println("------------------- Menü -------------------");
-		println("1: set order of trees");
+		
 		println("1: insert value");  // calls method toString
 		println("2: insert filename");
 		println("3: contains value");
@@ -34,62 +41,68 @@ public class BTreeMenu {
 		println("6: getMax");
 		println("7: getMin");
 		
-		println("9: isEmpty");
-		println("10: addAllFrom(BinaryTree otherTree)");
+		println("8: isEmpty");
+		println("9: addAllFrom(BinaryTree otherTree)");
 		
-		println("12: BinaryTree clone");  // calls method clear
-		println("13: printInorder");
-		println("14: printPostorder");
-		println("15: printPreorder");
-		println("16: printLevelorder");		
-
+		println("10: BinaryTree clone");  // calls method clear
+		println("11: printInorder");
+		println("12: printPostorder");
+		println("13: printPreorder");
+		println("14: printLevelorder");		
+		
 		int selection = readInt();
-		BTree tree = la[wl];
+		
+		println(" Welchen Baum wollen sie Bearbeiten?");
+		println(" 1 : Tree");
+		println(" 2 : OtherTree");
+		
+		int baum = readInt();
+		if(baum == 1)
+			original = tree;
+		else if(baum==2){
+			original = otherTree;
+		}else 
+			println("False Value of Tree.");
 
 		switch (selection) {
-		case 1:
-			println("Value for order: ");
-			int indexInsert = readInt();
-			println("Element:");
-			tree.insert(indexInsert);
-			break;
+
 		case 1:
 			println("Value to insert: ");
 			int indexInsert = readInt();
 			println("Element:");
-			tree.insert(indexInsert);
+			original.insert(indexInsert);
 			break;
 		case 2:
 			println("Filename to insert: ");
 			String lineInsert = readLine();
 			println("Element:");
-			tree.insert(lineInsert);
+			original.insert(lineInsert);
 			break;
 		case 3:
 			println("Value to contains: ");
 			int indexContains = readInt();
 			println("Element:");
-			tree.contains(indexContains);
+			original.contains(indexContains);
 			break;
 		case 4:
 			println("Size: ");
-			println(tree.size());
+			println(original.size());
 			break;
 		case 5:
 			println("Height: ");
-			println(tree.height());
+			println(original.height());
 			break;
 		case 6:
 			println("getMax: ");
-			println(tree.getMax());
+			println(original.getMax());
 			break;
 		case 7:
 			println("getMin: ");
-			println(tree.getMin());
+			println(original.getMin());
 			break;
 		case 9:
 			println("isEmpty: ");
-			println(tree.isEmpty());
+			println(original.isEmpty());
 			break;
 //		case 10:
 //			println("addAllFrom(BinaryTree otherTree): ");
@@ -98,19 +111,19 @@ public class BTreeMenu {
 //			break;
 		case 12:
 			println("BinaryTree clone: ");
-			println(tree.deepClone());
+			println(original.deepClone());
 			break;		
 		case 13:
-			tree.printInorder();
+			original.printInorder();
 			break;
 		case 14:
-			tree.printPostorder();
+			original.printPostorder();
 			break;
 		case 15:
-			tree.printPreorder();
+			original.printPreorder();
 			break;
 		case 16:
-			tree.printLevelorder();
+			original.printLevelorder();
 			break;
 		default:
 			println("not a valid operation code");
