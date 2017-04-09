@@ -1,185 +1,79 @@
 package de.hsMannheim.informatik.tpe.uebung1;
 
-import static gdi.MakeItSimple.*;
-
-import TPESchramm.BTreeNode;
-
-public class BTree implements B_Baum {//implements B_Baum{
-	private  int ordnung;
-	private  BTreeNode wurzel = null;
-	
-	
-	public static void main(String[] args) {
-		BTree bt = new BTree(2);
-		
-		BTreeNode a = new BTreeNode (bt, null, 2);
-		bt.wurzel = a;
-		BTreeNode b=  new BTreeNode (bt, null, 2);
-		b = a.getKind(1);
-		BTreeNode c=  new BTreeNode (bt, null, 2);
-		c = a.getKind(1);
-		
-		wurzel.keys[1] = new Integer 
-		
-//		Integer i= new Integer (11);
-//		bt.insert(i);
-//		 i= new Integer (2);
-//		bt.insert(i);
-//		 i= new Integer (4);
-//		bt.insert(i);
-//		 i= new Integer (5);
-//		bt.insert(i);
-//		 i= new Integer (7);
-//		bt.insert(i);
-//		 i= new Integer (8);
-//		bt.insert(i);
-//		 i= new Integer (1);
-//		bt.insert(i);
-//		 i= new Integer (3);
-//		bt.insert(i);
-//		 i= new Integer (1);
-//		bt.insert(i);
-//		 i= new Integer (7);
-//		bt.insert(i);
-//		 i= new Integer (9);
-//		bt.insert(i);
-		bt.printInorder();
-	}
+public interface BTree {
 	
 	
 	/**
-	 * Erzeugt einen B-Baum der gegebenen Ordnung
-	 * @param ordnung
+	 * Inserts an o into the tree
+	 * @param o to insert
+	 * @return true -> if the o can be inserted 
+	 * 		   false-> if the o already exists in the tree
 	 */
-	public BTree(int ordnung) {
-		this.ordnung = ordnung;
-		this.wurzel = null;
-	}
-	/**
-	 * Sucht nach dem gegebenen Schl�ssel im Baum. Ist der Schl�ssel im Baum enthalten, wird 
-	 * das im Baum gespeicherte Objekt zur�ckgegeben, andernfalls null
-	 * @param key
-	 * @return 
-	 */
-	public Integer suchen(Integer key) {
-		if (wurzel == null) {
-			return null;
-		}
-		return wurzel.suchen(key);
-	}
-	/**
-	 * Fuegt einen Schl�ssel ein, sofern der noch nicht im Baum enthalten ist
-	 * @param c
-	 * @return true wenn erfolgreich eingef�gt, false wenn c bereits im Baum enthalten ist
-	 */
-	public boolean insert(Integer c) {
-		if (wurzel == null) {
-			wurzel = new BTreeNode(this, null, this.ordnung);
-		}
-		return wurzel.insert(c);
-	}
-	void setWurzel(BTreeNode wurzel) {
-		this.wurzel = wurzel;
-	}
-	public String toString() {
-		if (wurzel == null) {
-			return "[leer]";
-		} else {
-			return wurzel.toString();
-		}
-	}
+	boolean insert (Integer o);
 	
-	public void printInorder() {
-		if(wurzel != null) {
-			wurzel.printInorder();
-			println();
-		} else {
-			println("tree is empty");			
-		}
-	}
+	/**
+	 * Insert all Elements from the file"filename"
+	 * @param filename
+	 * @return true -> when all elements are insert
+	 * 		   false-> when one or more elements aren't insert
+	 */
+	boolean insert (String filename);
+	
+	/**
+	 * Check if the element is already included
+	 * @param o 
+	 * @return true -> if the elements is already insert
+	 * 		   false-> if not
+	 */
+	boolean contains (Integer o);
+	
+	/**
+	 * Number of elements in the tree
+	 * @return count of all elements in the tree
+	 */
+	int size();
+	
+	/**
+	 * Determines the height of the tree.
+	 * @return the height of the tree
+	 */
+	int height();
+	
+	/**
+	 * Provides the largest element in the tree
+	 * @return the largest element in the tree. Null when there is no element
+	 */
+	int getMax();
+	
+	/**
+	 * Provides the smallest element in the tree
+	 * @return the smallest element in the tree. Null when there is no element
+	 */
+	int getMin();
+	
+	/**
+	 * Checks if the tree is empty (has no elements)
+	 * @return true when the tree is empty, false if not
+	 */
+	boolean isEmpty();
+	
+	/**
+	 * Adds all elements from an other tree to the current one Tree
+	 * @param otherTree all elements from this tree will be inserted
+	 * @return true if all elements could be inserted and false if one or more elements could not be inserted
+	 */
+	void addAll (B_Tree otherTree);
 
+	/**
+	 * creates a deep clone of the BTree 
+	 * @return cloned tree
+	 */
+	B_Tree clone();
 
-	@Override
-	public boolean insert(int o) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-
-	@Override
-	public boolean insert(String filename) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-
-	@Override
-	public boolean contains(int o) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-
-	@Override
-	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-
-	@Override
-	public int height() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-
-	@Override
-	public int getMax() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-
-	@Override
-	public int getMin() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-
-	@Override
-	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-
-	@Override
-	public void addAll(BTree otherTree) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void printPostorder() {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void printPreorder() {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void printLevelorder() {
-		// TODO Auto-generated method stub
-		
-	}
+	void printInorder();
+	void printPostorder();
+	void printPreorder();
+	void printLevelorder();
+	
 	
 }
