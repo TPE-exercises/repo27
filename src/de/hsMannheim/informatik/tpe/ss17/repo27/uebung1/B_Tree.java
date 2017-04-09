@@ -232,19 +232,36 @@ public class B_Tree implements BTree {// implements B_Baum{
 
 	@Override
 	public void printPostorder() {
-		// TODO Auto-generated method stub
+		if(root != null) {
+			root.printPostorder();
+		}
+		
+		println();
 
 	}
 
 	@Override
 	public void printPreorder() {
-		// TODO Auto-generated method stub
+		if(root != null) {
+			root.printPreorder();
+		}
+		
+		println();
 
 	}
 
 	@Override
 	public void printLevelorder() {
-		// TODO Auto-generated method stub
+		if(root != null) {
+			int height = root.height();
+			for(int i = 0; i < height; i++) {
+				root.printLevelorder(root, i);
+				
+				System.out.println("");
+			}
+		}
+		
+		println();
 
 	}
 

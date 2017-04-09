@@ -33,24 +33,6 @@ public class BTreeMenu {
 		
 		println("------------------- Menü -------------------");
 		
-		println("1: insert value");  // calls method toString
-		println("2: insert filename");
-		println("3: contains value");
-		println("4: size");
-		println("5: height");
-		println("6: getMax");
-		println("7: getMin");
-		
-		println("8: isEmpty");
-		println("9: addAllFrom(BinaryTree otherTree)");
-		
-		println("10: BinaryTree clone");  // calls method clear
-		println("11: printInorder");
-		println("12: printPostorder");
-		println("13: printPreorder");
-		println("14: printLevelorder");		
-		
-		int selection = readInt();
 		
 		println(" Welchen Baum wollen sie Bearbeiten?");
 		println(" 1 : Tree");
@@ -63,7 +45,25 @@ public class BTreeMenu {
 			original = otherTree;
 		}else 
 			println("False Value of Tree.");
-
+		
+		
+		println("1: insert value");  // calls method toString
+		println("2: insert filename");
+		println("3: contains value");
+		println("4: size");
+		println("5: height");
+		println("6: getMax");
+		println("7: getMin");
+		println("8: isEmpty");
+		println("9: addAllFrom(BinaryTree otherTree)");
+		println("10: BinaryTree clone");  // calls method clear
+		println("11: printInorder");
+		println("12: printPostorder");
+		println("13: printPreorder");
+		println("14: printLevelorder");		
+		
+		int selection = readInt();
+	
 		switch (selection) {
 
 		case 1:
@@ -100,29 +100,29 @@ public class BTreeMenu {
 			println("getMin: ");
 			println(original.getMin());
 			break;
-		case 9:
+		case 8:
 			println("isEmpty: ");
 			println(original.isEmpty());
 			break;
-//		case 10:
-//			println("addAllFrom(BinaryTree otherTree): ");
+//		case 9:
+//			println("addAll(BinaryTree otherTree): ");
 //			BTree tree = new BTree(i);
 //			tree.addAll(tree);
 //			break;
-		case 12:
+		case 10:
 			println("BinaryTree clone: ");
 			println(original.deepClone());
 			break;		
-		case 13:
+		case 11:
 			original.printInorder();
 			break;
-		case 14:
+		case 12:
 			original.printPostorder();
 			break;
-		case 15:
+		case 13:
 			original.printPreorder();
 			break;
-		case 16:
+		case 14:
 			original.printLevelorder();
 			break;
 		default:

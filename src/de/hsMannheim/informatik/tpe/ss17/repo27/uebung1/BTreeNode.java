@@ -19,7 +19,6 @@ public class BTreeNode {
 	boolean ret;
 	boolean nodeSplit;
 
-
 	public BTreeNode(int ordnung) {
 		this.maxKeys = ordnung * 2 + 1;
 		this.parent = null; // Vater
@@ -33,8 +32,8 @@ public class BTreeNode {
 		return parent;
 	}
 
-	Integer[] getKeys() {
-		return keys;
+	Integer getKey(int i) {
+		return keys[i];
 	}
 
 	BTreeNode getChild(int i) {
@@ -54,8 +53,6 @@ public class BTreeNode {
 		return true;
 	}
 
-	
-	
 	public boolean insert(Integer key) {
 
 		ret = true;
@@ -89,11 +86,11 @@ public class BTreeNode {
 				}
 
 				/*
-				 * �berpr�fe ob gegl�ttet werden muss
-//				 */
-//				if (keys.length > 2 * getOrder()) {
-//					split();
-//				}
+				 * �berpr�fe ob gegl�ttet werden muss //
+				 */
+				// if (keys.length > 2 * getOrder()) {
+				// split();
+				// }
 			} else
 				// Suche korrekten Teilbaum
 				getTeilbaumFuer(key).insertRecursiv(key);
@@ -103,56 +100,14 @@ public class BTreeNode {
 
 	}
 
-	
-//	public String toString() {
-//		int level = -1;
-//		BTreeNode k = this;
-//		while (k != null) {
-//			level++;
-//			k = k.parent;
-//		}
-//		char[] a = new char[level * 3];
-//		Arrays.fill(a, ' ');
-//		String s = new String(a);
-//		StringBuffer sb = new StringBuffer();
-//		sb.append(s);
-//		for (Iterator it = keys.iterator(); it.hasNext();) {
-//			sb.append(it.next());
-//			sb.append(" ");
-//		}
-//		sb.append("\n");
-//		for (Iterator it = children.iterator(); it.hasNext();) {
-//			sb.append(s);
-//			sb.append(it.next());
-//			// sb.append("\n");
-//		}
-//		return sb.toString();
-//	}
-
-	/* zu implementierende Methoden */
-
-//	public Integer search(Integer key) {
-//		int idx = keys.indexOf(key);
-//		if (idx >= 0) {
-//			return (Integer) keys.get(idx); // Gibt das Element zur�ck
-//		}
-//		// Wert nicht gefunden, mache weiter
-//		if (isLeaf()) {
-//			return null; // Blatt..habe keine Werte mehr
-//		}
-//		BTreeNode kind = getTeilbaumFuer(key); // Suche im korrekten Unterbaum
-//		return kind.search(key); // startet rekursive Suche und gibt Wert
-//									// zur�ck
-//	}
-
 	public boolean contains(Integer key) {
 		for (int i = 0; i < keys.length; i++) {
-			if (this.keys[i].equals(key)) {
+			if (keys[i].equals(key)) {
 				System.out.println("Schluessel schon vorhanden: " + key);
 				return true;
 			}
 		}
-		
+
 		return getTeilbaumFuer(key).contains(key);
 	}
 
@@ -163,18 +118,16 @@ public class BTreeNode {
 	boolean addKey(int einfuegePosition, Integer key) {
 		int merker1;
 		int merker2;
-		
-		
-		
+
 		merker1 = this.keys[einfuegePosition];
 		this.keys[einfuegePosition] = key;
 		for (int i = einfuegePosition + 1; i < keys.length; i++) {
 			merker2 = keys[i];
 			keys[i] = merker1;
 			merker1 = merker2;
-			
-			if(!isLeaf()){
-				BTreeNode merkerKind1 = this.children[einfuegePosition +1];
+
+			if (!isLeaf()) {
+				BTreeNode merkerKind1 = this.children[einfuegePosition + 1];
 				BTreeNode merkerKind2 = null;
 				for (int k = einfuegePosition + 2; k < children.length; i++) {
 					merkerKind2 = children[k];
@@ -182,7 +135,7 @@ public class BTreeNode {
 					merkerKind1 = merkerKind2;
 				}
 			}
-			
+
 		}
 
 		if (keys[(order * 2) + 1] == null)
@@ -238,13 +191,13 @@ public class BTreeNode {
 			b1.keys[j] = this.keys[j];
 			j++;
 		}
-		
+
 		// Zweiter Baum ab Ordnung MAX/2
 		BTreeNode b2 = new BTreeNode(getOrder());
 		b2.parent = parent;
-		
-		int k = j+1;
-		while (keys[k] > mittelKey && k<=maxKeys) {
+
+		int k = j + 1;
+		while (keys[k] > mittelKey && k <= maxKeys) {
 			b2.keys[k] = this.keys[k];
 			k++;
 		}
@@ -269,42 +222,41 @@ public class BTreeNode {
 				n++;
 			}
 
-//			// Laufe �ber Kinder bis MAX/2 und f�ge sie dem Unterbaum zu
-//			for (int j = 0; j <= getOrder(); j++) {
-//				BTreeNode kind = (BTreeNode) getKinder().get(j);
-//				b1.getKinder().add(kind);
-//				kind.parent = b1;
-//			}
-//
-//			// Laufe ab MAX/2 bis MAX und kopiere Kinder
-//			for (int j = getOrder() + 1; j <= keys.length; j++) {
-//				BTreeNode kind = (BTreeNode) getKinder().get(j);
-//				b2.getKinder().add(kind);
-//				kind.parent = b2;
-//			}
+			// // Laufe �ber Kinder bis MAX/2 und f�ge sie dem Unterbaum zu
+			// for (int j = 0; j <= getOrder(); j++) {
+			// BTreeNode kind = (BTreeNode) getKinder().get(j);
+			// b1.getKinder().add(kind);
+			// kind.parent = b1;
+			// }
+			//
+			// // Laufe ab MAX/2 bis MAX und kopiere Kinder
+			// for (int j = getOrder() + 1; j <= keys.length; j++) {
+			// BTreeNode kind = (BTreeNode) getKinder().get(j);
+			// b2.getKinder().add(kind);
+			// kind.parent = b2;
+			// }
 		}
-		
+
 		int placeToInsert = parent.einfuegePosition(mittelKey, parent.keys);
 		parent.addKey(placeToInsert, mittelKey);
-		
-		parent.children[placeToInsert] = b1;
-		parent.children[placeToInsert+1] = b2;
 
-		
-//		// L�sche aus Vaterknoten
-//		parent.getKinder().remove(this);
-//		
-//		// Hole den Schl�sselwert aus der Mitte
-//		Integer mitte = (Integer) getKeys().get(getOrder());
-//
-//		// Versuche in Vater zu integrieren
-//		int k = einfuegePosition(mitte, parent.getKeys());
-//		// System.out.println("Vaterknoten:\n"+vater+"k = "+k);
-//		// F�ge in den Vater ein
-//		parent.getKeys().addKey(k, mitte);
-//		// Der Vater hat nun alten linken und rechten Teil als S�hne
-//		parent.getKinder().add2(k, b1);
-//		parent.getKinder().add2(k + 1, b2);
+		parent.children[placeToInsert] = b1;
+		parent.children[placeToInsert + 1] = b2;
+
+		// // L�sche aus Vaterknoten
+		// parent.getKinder().remove(this);
+		//
+		// // Hole den Schl�sselwert aus der Mitte
+		// Integer mitte = (Integer) getKeys().get(getOrder());
+		//
+		// // Versuche in Vater zu integrieren
+		// int k = einfuegePosition(mitte, parent.getKeys());
+		// // System.out.println("Vaterknoten:\n"+vater+"k = "+k);
+		// // F�ge in den Vater ein
+		// parent.getKeys().addKey(k, mitte);
+		// // Der Vater hat nun alten linken und rechten Teil als S�hne
+		// parent.getKinder().add2(k, b1);
+		// parent.getKinder().add2(k + 1, b2);
 
 	}
 
@@ -314,13 +266,10 @@ public class BTreeNode {
 	private boolean isEmpty() {
 		return (getParent() == null);
 	}
-	
 
 	public void printValue() {
 		print(" " + keys + " ");
 	}
-
-
 
 	public int size() {
 		this.sizeRecursiv();
@@ -352,77 +301,75 @@ public class BTreeNode {
 	}
 
 	public Integer getMax() {
-		maxValue =0;
-		
+		maxValue = 0;
+
 		this.getMaxRecursiv();
-		
+
 		return maxValue;
 	}
 
 	public void getMaxRecursiv() {
 		boolean bol = true;
-		int i=getOrder()*2;
-		
-		if(this.isLeaf())
-			for(int k = getOrder()*2; i>0;i--){
-				if(this.keys[k] != null){
-					if(this.keys[k] > maxValue)
-					maxValue = this.keys[k];
+		int i = getOrder() * 2;
+
+		if (this.isLeaf())
+			for (int k = getOrder() * 2; i > 0; i--) {
+				if (this.keys[k] != null) {
+					if (this.keys[k] > maxValue)
+						maxValue = this.keys[k];
 				}
-					
+
 			}
-		else{
-		
-		while(bol){
-			if(this.children[i+1] != null){
-				this.getMaxRecursiv();
-				bol=false;
+		else {
+
+			while (bol) {
+				if (this.children[i + 1] != null) {
+					this.getMaxRecursiv();
+					bol = false;
+				}
+				i--;
 			}
-			i--;
+
 		}
-		
-		} 
 	}
 
 	public Integer getMin() {
 
-		minValue= 0;
-		
+		minValue = 0;
+
 		this.getMinRecursiv();
-	
-	
+
 		return minValue;
 	}
 
 	public void getMinRecursiv() {
 
-		if(null != this.children[0]) 
+		if (null != this.children[0])
 			this.children[0].getMinRecursiv();
 		else
 			minValue = keys[0].intValue();
 	}
-	
+
 	BTreeNode deepClone() {
 		BTreeNode newNode = new BTreeNode(order);
-		
-		//Clone elements
-		for(int i = 0; i< keys.length; i++) {
-			if(keys[i] != null) {
+
+		// Clone elements
+		for (int i = 0; i < keys.length; i++) {
+			if (keys[i] != null) {
 				newNode.keys[i] = keys[i];
 			}
 		}
-		
-		//clone children
-		for(int i = 0; i < children.length; i++) {
-			if(children[i] != null) {
+
+		// clone children
+		for (int i = 0; i < children.length; i++) {
+			if (children[i] != null) {
 				newNode.children[i] = children[i].deepClone();
 			}
 		}
-		
+
 		return newNode;
 	}
 
-	
 	public void printInorder() {
 
 		for (int i = 0; i < order * 2 && this.children[i] != null; i++) {
@@ -473,37 +420,42 @@ public class BTreeNode {
 		println("-|-");
 	}
 
-	public void printLevelorder() {
 
-		for (int i = 0; i < order * 2 && this.children[i] != null; i++) {
 
-			// if(null != this.kinder[i])
-			// this.kinder[i].printLevelorder();
-			//
-			//
-			// println(keys[i].intValue());
-			// i++;
-			//
-			// if(null != this.kinder[i])
-			// this.kinder[i].printLevelorder();
-			//
+	public void printLevelorder(BTreeNode root, int m) {
+		BTreeNode node = root;
+		if (node == null)
+			return;
+		else {
+			for (int i = 0; i < tree.height(); i++) {
+
+				print(" ");
+				printLevelorder_rec(node, i, m);
+				nodeLevel++;
+			}
 		}
-		println("-|-");
 	}
 
-	public Integer[] allElements( Integer[] allElements){
-		
-		
-		
-		
-		
-		
-		
-		return null;
-		
+	private int nodeLevel = 0;
+
+	private void printLevelorder_rec(BTreeNode node, int level, int m) {
+		if (level > 0) {
+			for (int i = 0; i < 2 * m + 1; i++) {
+				if (node.getChild(i) != null) {
+					print(getKey(i));
+					printLevelorder_rec(node.getChild(i), level - 1, m);
+					print(getKey(i));
+				}
+			}
+		} else {
+			for (int i = 0; i < 2 * m + 1; i++) {
+				if (node.getKey(i) != null) {
+					print(getKey(i));
+				}
+			}
+
+		}
 	}
-			
-			
+
+
 }
-
-
