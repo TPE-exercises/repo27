@@ -13,9 +13,16 @@ public class BTreeNode {
 	private Integer[] keys;
 	private BTreeNode[] kinder;
 	int maxSchluessel;
+<<<<<<< HEAD
 	int counter = 0;
 	int height = 0;
 
+=======
+	int counter=0;
+	int height =0;
+	int maxValue;
+	int minValue;
+>>>>>>> branch 'master' of https://github.com/TPE-exercises/repo27.git
 	boolean ret;
 	boolean nodeSplit;
 
@@ -298,6 +305,11 @@ public class BTreeNode {
 
 
 	public int size() {
+<<<<<<< HEAD
+=======
+		
+		counter =0;
+>>>>>>> branch 'master' of https://github.com/TPE-exercises/repo27.git
 		this.sizeRecursiv();
 		return counter;
 	}
@@ -327,28 +339,79 @@ public class BTreeNode {
 	}
 
 	public int getMax() {
+<<<<<<< HEAD
 
 		return 0;
+=======
+		
+		maxValue =0;
+			
+		this.getMaxRecursiv();
+		
+		return maxValue;
+>>>>>>> branch 'master' of https://github.com/TPE-exercises/repo27.git
 	}
 
 	public void getMaxRecursiv() {
+<<<<<<< HEAD
 		//set var to max
 		if(null != this.kinder[(getOrdnung()*2)+1]) 
 		this.kinder[(getOrdnung()*2)+1].heightRecursiv();
 	 
+=======
+		boolean bol = true;
+		int i=getOrdnung()*2;
+		
+		if(this.istBlatt())
+			for(int k = getOrdnung()*2; i>0;i--){
+				if(this.keys[k] != null){
+					if(this.keys[k] > maxValue)
+					maxValue = this.keys[k];
+				}
+					
+			}
+		else{
+		
+		while(bol){
+			if(this.kinder[i+1] != null){
+				this.getMaxRecursiv();
+				bol=false;
+			}
+			i--;
+		}
+		
+		} 
+>>>>>>> branch 'master' of https://github.com/TPE-exercises/repo27.git
 	}
 
 	public int getMin() {
+<<<<<<< HEAD
 		if (this.kinder[0] == null)
 			return this.keys[0];
 		else
 			return 0;
+=======
+		
+			minValue= 0;
+			
+			this.getMinRecursiv();
+		
+		
+		return minValue;
+>>>>>>> branch 'master' of https://github.com/TPE-exercises/repo27.git
 	}
 
 	public void getMinRecursiv() {
+<<<<<<< HEAD
 		//set var to min
+=======
+		
+			
+		
+>>>>>>> branch 'master' of https://github.com/TPE-exercises/repo27.git
 		
 		if(null != this.kinder[0]) 
+<<<<<<< HEAD
 		this.kinder[0].heightRecursiv();
 	}
 	
@@ -370,6 +433,12 @@ public class BTreeNode {
 		}
 		
 		return newNode;
+=======
+			this.kinder[0].getMinRecursiv();
+		else
+			minValue = keys[0].intValue();
+		 
+>>>>>>> branch 'master' of https://github.com/TPE-exercises/repo27.git
 	}
 
 	
