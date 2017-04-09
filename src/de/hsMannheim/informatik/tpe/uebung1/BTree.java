@@ -43,13 +43,13 @@ public interface BTree {
 	 * Provides the largest element in the tree
 	 * @return the largest element in the tree. Null when there is no element
 	 */
-	int getMax();
+	Integer getMax();
 	
 	/**
 	 * Provides the smallest element in the tree
 	 * @return the smallest element in the tree. Null when there is no element
 	 */
-	int getMin();
+	Integer getMin();
 	
 	/**
 	 * Checks if the tree is empty (has no elements)
@@ -68,7 +68,7 @@ public interface BTree {
 	 * creates a deep clone of the BTree 
 	 * @return cloned tree
 	 */
-	B_Tree clone();
+	B_Tree deepClone();
 
 	void printInorder();
 	void printPostorder();
