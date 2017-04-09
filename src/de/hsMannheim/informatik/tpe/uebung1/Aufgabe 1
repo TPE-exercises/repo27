@@ -1,1 +1,22 @@
-Aufgabe 1
+Aufgabe 1 : Pakete
+
+Waehlen Sie ein Paket-Benennungs-Schema fuer Ihre
+Uebungsaufgaben zur Vorlesung TPE. Erklaeren Sie Ihr
+Schema und begruenden Sie, warum es durch das von Ihnen
+gewaehlte  Schema  nicht  zu  Kollisionen  mit
+anderen Gruppen und Entwicklern kommen kann.
+
+
+Wir haben uns fuer eine Benennung entschieden welche klar differenziert von wem das Projekt stammt.
+Dies passiert durch passende Eingrenzung des Projektes.
+Zuerst werden gröbere Parameter festgelegt wie : in welchem Land (de) und an welcher Hochschule/Uni
+(hsMannheim) ist es entstanden. Danach kommen die Studiengangsspezifischen Parameter : welcher Studiengang 
+(informatik) und danach welches Vorlesung (TPE) und danach das aktuelle Semester (SS17).
+Zum Schluss kommen die Eingrenzungen für Personen/Gruppen : somit wird noch der Gruppenname für eindeutige 
+Zuordnung ([Gruppenname]) und die aktuelle Uebungsnummer ([[Uebung]) angehängt.
+
+Und somit sollte es zu keinen Überschneidungen oder Missverständnissen kommen.
+
+Hier ist die vereinfachte Form:
+
+ de.hsMannheim.informatik.TPE.SS17.[Gruppenname].[Uebung]
