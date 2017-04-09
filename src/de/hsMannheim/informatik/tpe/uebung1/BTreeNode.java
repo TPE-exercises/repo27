@@ -15,7 +15,8 @@ public class BTreeNode {
 	int maxSchluessel;
 	int counter=0;
 	int height =0;
-
+	int maxValue;
+	int minValue;
 	boolean ret;
 	boolean nodeSplit;
 	
@@ -374,6 +375,7 @@ public void printLevelorder() {
 	
 	public int size() {
 		
+		counter =0;
 		this.sizeRecursiv();
 		
 		return counter ;
@@ -419,41 +421,55 @@ public void printLevelorder() {
 		
 	public int getMax() {
 		
+		maxValue =0;
+			
+		this.getMaxRecursiv();
 		
-		return 0;
+		return maxValue;
 	}
 	public void getMaxRecursiv() {
+		boolean bol = true;
+		int i=getOrdnung()*2;
 		
+		if(this.istBlatt())
+			for(int k = getOrdnung()*2; i>0;i--){
+				if(this.keys[k] != null){
+					if(this.keys[k] > maxValue)
+					maxValue = this.keys[k];
+				}
+					
+			}
+		else{
 		
-		set var to max
+		while(bol){
+			if(this.kinder[i+1] != null){
+				this.getMaxRecursiv();
+				bol=false;
+			}
+			i--;
+		}
 		
-		
-		if(null != this.kinder[(getOrdnung()*2)+1]) 
-		this.kinder[(getOrdnung()*2)+1].heightRecursiv();
-
-		 
-		 
+		} 
 	}
 
 	public int getMin() {
 		
-		if(this.kinder[0] == null)
-			return this.keys[0];
-		else
+			minValue= 0;
 			
+			this.getMinRecursiv();
 		
 		
-		return 0;
+		return minValue;
 	}
 	public void getMinRecursiv() {
 		
 			
-		set var to min
+		
 		
 		if(null != this.kinder[0]) 
-		this.kinder[0].heightRecursiv();
-
-		 
+			this.kinder[0].getMinRecursiv();
+		else
+			minValue = keys[0].intValue();
 		 
 	}
 
