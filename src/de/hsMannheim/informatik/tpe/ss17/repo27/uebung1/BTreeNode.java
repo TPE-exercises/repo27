@@ -54,18 +54,45 @@ public class BTreeNode {
 	}
 
 	public boolean insert(Integer key) {
-
+//		if (key == null) {
+//			return false;
+//		}
+//		else if (this.keys.length == 0){
+//			return false;
+//		}
+//		
+//		for(int i=0; i<this.keys.length;i++){
+//			
+//			if(this.keys[i]==null){
+//				this.keys[i]=key;
+//				return true;
+//			}
+//			else{
+//				if(this.keys[i].equals(key)){
+//					println("Im Baum schon vorhanden");
+//					return false;
+//				}
+//			}
+//			
+//		}
+//		return false;
+		
+		
+		
 		ret = true;
 		if (key == null) {
 			return false;
 		}
 
-		if (this.keys[0] == null)
+		else if (this.keys[0] == null){
 			this.keys[0] = key;
-
-		this.insertRecursiv(key);
-
-		return ret;
+			return true;
+		}
+		else{
+			this.insertRecursiv(key);
+			return ret;
+		}
+		
 	}
 
 	public void insertRecursiv(Integer key) {
@@ -80,10 +107,9 @@ public class BTreeNode {
 				// System.out.println("insert "+key+" in "+getSchluessel());
 				int i = einfuegePosition(key, keys);
 				nodeSplit = this.addKey(i, key);
-
-				if (nodeSplit) {
-					this.split();
-				}
+				ret = nodeSplit;
+				
+				
 
 				/*
 				 * ï¿½berprï¿½fe ob geglï¿½ttet werden muss //
@@ -95,7 +121,8 @@ public class BTreeNode {
 				// Suche korrekten Teilbaum
 				getTeilbaumFuer(key).insertRecursiv(key);
 			;
-		} else
+		} 
+		else
 			ret = false;
 
 	}
@@ -106,18 +133,21 @@ public class BTreeNode {
 				System.out.println("Schluessel schon vorhanden: " + key);
 				return true;
 			}
+			else if(isLeaf()){
+				return false;
+			}
 		}
 
 		return getTeilbaumFuer(key).contains(key);
 	}
 
 	/*
-	 * Einfï¿½gen: erst normal Einfügen und dann splitten bis keine
-	 * ï¿½berlï¿½ufe
+	 * Einfügen: erst normal Einfügen und dann splitten bis keine
+	 * Überläufe
 	 */
 	boolean addKey(int einfuegePosition, Integer key) {
-		int merker1;
-		int merker2;
+		Integer merker1;
+		Integer merker2;
 
 		merker1 = this.keys[einfuegePosition];
 		this.keys[einfuegePosition] = key;
@@ -138,7 +168,7 @@ public class BTreeNode {
 
 		}
 
-		if (keys[(order * 2) + 1] == null)
+		if (keys[(order * 2) ] == null)
 			return false;
 		else
 			return true;
@@ -146,19 +176,33 @@ public class BTreeNode {
 	}
 
 	int einfuegePosition(Integer key, Integer[] ls) {
-		int i = 0;
-		while (i < ls.length) { // Durchlaufe die Werteliste
+		
+		for(int i = 0; i<ls.length;i++){
 			if (ls[i] == null) {
 				return i;
 			}
-			if (key < ls[i]) { // Vergleiche Key, falls kleiner gib die Position
+			else if (key < ls[i]) { // Vergleiche Key, falls kleiner gib die Position
 								// zurï¿½ck
 				return i;
-			} else {
-				i++; // Ansonsten weiter
+			} 
+			else{
+				
 			}
 		}
-		return i;
+		return 0;
+//		int i = 0;
+//		while (i < ls.length) { // Durchlaufe die Werteliste
+//			if (ls[i] == null) {
+//				return i;
+//			}
+//			if (key < ls[i]) { // Vergleiche Key, falls kleiner gib die Position
+//								// zurï¿½ck
+//				return i;
+//			} else {
+//				i++; // Ansonsten weiter
+//			}
+//		}
+//		return i;
 	}
 
 	BTreeNode getTeilbaumFuer(Integer key) {
@@ -371,20 +415,26 @@ public class BTreeNode {
 	}
 
 	public void printInorder() {
-
-		for (int i = 0; i < order * 2 && this.children[i] != null; i++) {
-
-			if (null != this.children[i])
-				this.children[i].printInorder();
-
-			println(keys[i].intValue());
-			i++;
-
-			// if(null != this.kinder[i+1])
-			// this.kinder[i+1].printInorder();
-
+		for(int i=0; i<keys.length;i++){
+			if(keys[i]==null){
+			print("null ");
+			}
+			else
+			print(keys[i].intValue()+" ");
 		}
-
+		
+//		for (int i = 0; i < order * 2 && this.children[i] != null; i++) {
+//
+//			if (null != this.children[i])
+//				this.children[i].printInorder();
+//
+//			println(keys[i].intValue());
+//			i++;
+//
+//			// if(null != this.kinder[i+1])
+//			// this.kinder[i+1].printInorder();
+//
+//		}
 	}
 
 	public void printPreorder() {

@@ -39,14 +39,16 @@ public class BTreeMenu {
 		println(" 2 : OtherTree");
 		
 		int baum = readInt();
-		if(baum == 1)
+		if(baum == 1){
 			original = tree;
+		}
 		else if(baum==2){
 			original = otherTree;
-		}else 
+		}
+		else {
 			println("False Value of Tree.");
-		
-		
+		}
+		if(baum == 1 || baum ==2){
 		println("1: insert value");  // calls method toString
 		println("2: insert filename");
 		println("3: contains value");
@@ -133,5 +135,6 @@ public class BTreeMenu {
 		println();
 		readLine();
 
+		}
 	}
 }
