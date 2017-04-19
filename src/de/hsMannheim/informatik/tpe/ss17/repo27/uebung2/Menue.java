@@ -7,10 +7,11 @@ public class Menue{
 	static String name;
 	static String behaeltnis;
 	static String art;
-	static String[] sorten;
-	static String[] extras;
+	static String[] sorten=null;
+	static String[] extras=null;
 	static Eis eis;
-
+	static int[] anzahlKugel = null;
+	static int[] anzahlExtras = null;
 	static Eisdiele ed = new Eisdiele();
 	
 	public static void main(String[] args) {
@@ -36,6 +37,8 @@ public class Menue{
 			break;
 		default:
 			ed.entschuldigen();
+			println("=======");
+			main(args);
 			break;
 		};
 
@@ -49,30 +52,55 @@ public class Menue{
 
 		println("Bitte wählen Sie nun die Art von Ihrem Eis!");
 		println("Bällchen");
-		println("Bälle");
+		//println("Bälle"); ??ist doch dasselbe wie eine Zeilen oebn?
 		println("Spaghettis");
 		println("Kekse");
 		art = readLine();
-
+		
+		if(art.equals("Bällchen")){
+			println("Bitte geben Sie an, wieviele Bälle Sie haben möchten!");
+			anzahlKugel = new int[readInt()];
+			sorten = new String[anzahlKugel.length+1];
+		}
 		println("Was für eine Sorte wollen Sie haben?");
 		println("Vanille");
 		println("Schokolade");
 		println("Straciatella");
 		println("Zitrone");
-		//sorten[];
+		
+		for(int i=0; i<sorten.length ;i++){
+			sorten[i]=readLine();
+
+		}
 
 		println("Möchten Sie noch paar extras auf Ihrem Eis?");
 		println("Sahne");
 		println("Schokosträusel");
 		println("Keks");
 		println("Soße");
-		//extras = readLine();
+		println("");
+		println("Bitte geben Sie an, wieviele extras Sie haben möchten!");
+		anzahlExtras = new int[readInt()];
+		if(anzahlExtras.length != 0) {
+			extras = new String[anzahlExtras.length + 1];
+			for (int i = 0; i <extras.length; i++) {
+				extras[i]=readLine();
+			ed.eis.setExtras(extras);
+			}
+		}
 		
-		ed.bestellen(name);
-		ed.eis.setName(name);
 		ed.eis.setBehaeltnis(behaeltnis);
 		ed.eis.setArt(art);
 		ed.eis.setSorten(null);
 		ed.eis.setExtras(null);
+		
+		ed.bestellen(name);
+		
+		ed.eis.vorbereiten();
+		ed.eis.fuellen();
+		ed.eis.dekorieren();
+		
+		ed.kassieren();
+		println(ed.eis.getExtras());
 	}
 }

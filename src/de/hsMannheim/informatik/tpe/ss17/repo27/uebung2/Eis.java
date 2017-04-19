@@ -1,6 +1,6 @@
 package de.hsMannheim.informatik.tpe.ss17.repo27.uebung2;
 
-import static gdi.MakeItSimple.readInt;
+import static gdi.MakeItSimple.*;
 
 public class Eis {
 
@@ -9,7 +9,7 @@ public class Eis {
 	String behaeltnis;
 	String art;
 	String[] sorten = { "Vanille", "Schokolade", "Straciatella", "Zitron" };
-	String[] extras = { "Sahne", " Schokostraeusel", "Keks", "Soﬂe" };
+	String[] extras;//= { "Sahne", " Schokostraeusel", "Keks", "Soﬂe" };
 
 	public Eis(String name, double preis, String behaeltnis, String art, String[] sorten, String[] extras) {
 		this.name = name;
@@ -17,7 +17,7 @@ public class Eis {
 		this.behaeltnis = behaeltnis;
 		this.art = art;
 		this.sorten = sorten;
-		this.extras = extras;
+		//this.extras = extras;
 
 	}
 
@@ -27,15 +27,15 @@ public class Eis {
 		this.behaeltnis = null;
 		this.art = null;
 		this.sorten = null;
-		this.extras = null;
+		//this.extras = null;
 	}
 
-	void vorbereitet() {
-		
+	void vorbereiten() {
+		this.behaeltnis = getBehaeltnis(); 
 	}
 
 	void fuellen() {
-
+		
 	}
 
 	void dekorieren() {
@@ -87,6 +87,9 @@ public class Eis {
 	}
 
 	public String[] getExtras() {
+		for(int i=0; i<this.extras.length;i++){
+			println(extras[i]);
+		}
 		return this.extras;
 	}
 

@@ -3,6 +3,10 @@ package de.hsMannheim.informatik.tpe.ss17.repo27.uebung2;
 import static gdi.MakeItSimple.*;
 
 public class Eisdiele extends Eis{
+	
+	static double preis;
+	
+	
 	static Eis eis = new Eis();
 		
 	Eisdiele(){
@@ -27,6 +31,7 @@ public class Eisdiele extends Eis{
 			break;
 		};
 		
+		
 	}
 
 
@@ -36,7 +41,7 @@ public class Eisdiele extends Eis{
 	}
 	
 	static void kassieren(){
-		double preis = eis.getPreis();
+		preis = eis.getPreis();
 		println("Das macht dann " + preis+"€");
 		println("Bitte geben Sie jetzt Ihre Summe ein!");
 		double geld = readInt();
@@ -57,6 +62,7 @@ public class Eisdiele extends Eis{
 	
 	static void entschuldigen(){
 		println("Entschulden Sie, aber die von Ihnen ausgewählte Sorte haben wir leider nicht zur verfügung!");
+		
 	}
 
 }
