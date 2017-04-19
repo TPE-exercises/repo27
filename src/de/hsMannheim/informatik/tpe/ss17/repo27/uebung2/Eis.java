@@ -8,76 +8,86 @@ public class Eis {
 	double preis;
 	String behaeltnis;
 	String art;
-	String[] sorten = {"Vanille","Schokolade","Straciatella","Zitron"};
-	String[] extras  = {"Sahne"," Schokostraeusel","Keks","Soﬂe"};
+	String[] sorten = { "Vanille", "Schokolade", "Straciatella", "Zitron" };
+	String[] extras = { "Sahne", " Schokostraeusel", "Keks", "Soﬂe" };
 
-	public Eis(String name, double preis, String behaeltnis, String art, String[] sorten, String[] extras){
+	public Eis(String name, double preis, String behaeltnis, String art, String[] sorten, String[] extras) {
 		this.name = name;
 		this.preis = preis;
 		this.behaeltnis = behaeltnis;
 		this.art = art;
 		this.sorten = sorten;
 		this.extras = extras;
-		vorbereitet();
+
 	}
-		
-	void vorbereitet(){
-		switch (name) {
-		case "Spaghettieis":
-			preis = 4.99;
-			art = "Spaghettis";
-			break;
-		case "Bananasplit":
-			preis = 4.49;
-			art = "";
-			break;
-		case "Nussbecher":
-			preis = 3.99;
-			art = "";
-			break;
-		default: 
-			preis = 0.0;
-			break;
-		};
-		
-		switch (behaeltnis) {
-		case "Waffel":
-			behaeltnis = "Waffel";
-			preis = preis+0.10;
-			break;
-		case "Becher":
-			behaeltnis = "Becher";
-			preis = preis+0.0;
-			break;
-		case "Teller":
-			behaeltnis = "Teller";
-			preis = preis+0.05;
-			break;
-		case "Schussel":
-			behaeltnis = "Schussel";
-			preis = preis+0.05;
-			break;
-		case "Glas":
-			behaeltnis = "Glas";
-			preis = preis+0.15;
-			break;
-		default: 
-			behaeltnis = "";
-			preis = 0;
-			break;
-		};
+
+	public Eis() {
+		this.name = null;
+		this.preis = 0.0;
+		this.behaeltnis = null;
+		this.art = null;
+		this.sorten = null;
+		this.extras = null;
 	}
-	
-	void fuellen(){
+
+	void vorbereitet() {
 		
 	}
-	
-	void dekorieren(){
-		
+
+	void fuellen() {
+
 	}
-	
-	double gebePreisZurueck(){
-		return preis;
+
+	void dekorieren() {
+
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getName() {
+		return this.name;
+	}
+
+	public void setPreis(double preis) {
+		this.preis = preis;
+	}
+
+	public double getPreis() {
+		return this.preis;
+	}
+
+	public void setBehaeltnis(String behaeltnis) {
+		this.behaeltnis = behaeltnis;
+	}
+
+	public String getBehaeltnis() {
+		return this.behaeltnis;
+	}
+
+	public void setArt(String art) {
+		this.art = art;
+	}
+
+	public String getArt() {
+		return this.art;
+	}
+
+	public void setSorten(String[] sorten) {
+		this.sorten = sorten;
+	}
+
+	public String[] getSorten() {
+		return this.sorten;
+	}
+
+	public void setExtras(String[] extras) {
+		this.extras = extras;
+	}
+
+	public String[] getExtras() {
+		return this.extras;
 	}
 
 }
