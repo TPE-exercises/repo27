@@ -72,11 +72,7 @@ public class B_Tree implements BTree {// implements B_Baum{
 			 if (splitIsNeeded){
 				 
 			 }
-			
-			
-			
-			
-			return ;
+			 return true;//****
 		}
 	}
 
