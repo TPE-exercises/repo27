@@ -11,15 +11,7 @@ public class Eis {
 	String[] sorten = { "Vanille", "Schokolade", "Straciatella", "Zitron" };
 	String[] extras;//= { "Sahne", " Schokostraeusel", "Keks", "Soﬂe" };
 
-	public Eis(String name, double preis, String behaeltnis, String art, String[] sorten, String[] extras) {
-		this.name = name;
-		this.preis = preis;
-		this.behaeltnis = behaeltnis;
-		this.art = art;
-		this.sorten = sorten;
-		//this.extras = extras;
 
-	}
 
 	public Eis() {
 		this.name = null;
