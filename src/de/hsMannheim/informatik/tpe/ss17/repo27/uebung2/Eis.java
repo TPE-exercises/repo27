@@ -8,30 +8,32 @@ public class Eis {
 	double preis;
 	String behaeltnis;
 	String art;
-	String[] sorten = { "Vanille", "Schokolade", "Straciatella", "Zitron" };
-	String[] extras;//= { "Sahne", " Schokostraeusel", "Keks", "Soﬂe" };
+	String[] sorten;
+	String[] extras;
 
-
-
-	public Eis() {
+	Eis() {
 		this.name = null;
 		this.preis = 0.0;
 		this.behaeltnis = null;
 		this.art = null;
 		this.sorten = null;
-		//this.extras = null;
+		this.extras = null;
 	}
 
 	void vorbereiten() {
-		this.behaeltnis = getBehaeltnis(); 
+		println("Das Beh‰ltnis " + this.behaeltnis + " wird rausgenommen!");
 	}
 
 	void fuellen() {
-		
+		for (int n = 0; n < sorten.length; n++) {
+			println("Beh‰ltnis wird mit: " + this.sorten[n] + "eis gef¸llt!");
+		}
 	}
 
 	void dekorieren() {
-
+		for (int n = 0; n < extras.length; n++) {
+			println("Das Eis wird mit: " + this.extras[n] + " ganiert");
+		}
 	}
 
 	public void setName(String name) {
@@ -79,7 +81,7 @@ public class Eis {
 	}
 
 	public String[] getExtras() {
-		for(int i=0; i<this.extras.length;i++){
+		for (int i = 0; i < this.extras.length; i++) {
 			println(extras[i]);
 		}
 		return this.extras;
