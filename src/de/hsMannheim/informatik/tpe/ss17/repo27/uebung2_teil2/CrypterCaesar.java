@@ -26,7 +26,7 @@ public class CrypterCaesar implements Crypter{
 				umwandeln = (int) c[i] - 55;
 			}
 			else{
-				umwandeln = (int) c[i] - 35;
+				umwandeln = (int) c[i] - 29;
 			}
 			c[i]=(char)umwandeln;
 		}
