@@ -20,10 +20,14 @@ public class CrypterCaesar implements Crypter{
 	public String encrypt(String message) {
 		print("encrypt: ");
 		char[] c = message.toCharArray();
+		int umwandeln;
 		for(int i=0; i<message.length();i++){
-			//print(c[i]+",");
-			int umwandeln = (int) c[i] - 32 + 3;
-//			print((char)umwandeln);	
+			if((int)c[i] == (int) 'x' || (int)c[i] == (int) 'y' || (int)c[i] == (int) 'z'){
+				umwandeln = (int) c[i] - 55;
+			}
+			else{
+				umwandeln = (int) c[i] - 35;
+			}
 			c[i]=(char)umwandeln;
 		}
 		String neuesWort = String.valueOf(c);	
@@ -33,10 +37,16 @@ public class CrypterCaesar implements Crypter{
 	public String decrypt(String cypherText) {
 		print("decrypt: ");
 		char[] c = cypherText.toCharArray();
+		int umwandeln;
+		
 		for(int i=0; i<cypherText.length();i++){
-//			print(c[i]);
-			int umwandeln = (int) c[i] + 32 - 3;
-//			print((char)umwandeln);		
+			if((int)c[i] == (int) 'A' || (int)c[i] == (int) 'B' || (int)c[i] == (int) 'C'){
+				umwandeln = (int) c[i] + 55;
+			}
+			else{
+			umwandeln = (int) c[i] + 29;
+			}
+			
 			c[i]=(char)umwandeln;
 		}
 		String neuesWort = String.valueOf(c);	
