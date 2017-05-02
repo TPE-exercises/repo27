@@ -33,6 +33,22 @@ public class BTreeMenu {
 		
 		println("------------------- Menü -------------------");
 		
+		
+		println(" Welchen Baum wollen sie Bearbeiten?");
+		println(" 1 : Tree");
+		println(" 2 : OtherTree");
+		
+		int baum = readInt();
+		if(baum == 1){
+			original = tree;
+		}
+		else if(baum==2){
+			original = otherTree;
+		}
+		else {
+			println("False Value of Tree.");
+		}
+		if(baum == 1 || baum ==2){
 		println("1: insert value");  // calls method toString
 		println("2: insert filename");
 		println("3: contains value");
@@ -40,10 +56,8 @@ public class BTreeMenu {
 		println("5: height");
 		println("6: getMax");
 		println("7: getMin");
-		
 		println("8: isEmpty");
 		println("9: addAllFrom(BinaryTree otherTree)");
-		
 		println("10: BinaryTree clone");  // calls method clear
 		println("11: printInorder");
 		println("12: printPostorder");
@@ -51,19 +65,7 @@ public class BTreeMenu {
 		println("14: printLevelorder");		
 		
 		int selection = readInt();
-		
-		println(" Welchen Baum wollen sie Bearbeiten?");
-		println(" 1 : Tree");
-		println(" 2 : OtherTree");
-		
-		int baum = readInt();
-		if(baum == 1)
-			original = tree;
-		else if(baum==2){
-			original = otherTree;
-		}else 
-			println("False Value of Tree.");
-
+	
 		switch (selection) {
 
 		case 1:
@@ -100,29 +102,29 @@ public class BTreeMenu {
 			println("getMin: ");
 			println(original.getMin());
 			break;
-		case 9:
+		case 8:
 			println("isEmpty: ");
 			println(original.isEmpty());
 			break;
-//		case 10:
-//			println("addAllFrom(BinaryTree otherTree): ");
+//		case 9:
+//			println("addAll(BinaryTree otherTree): ");
 //			BTree tree = new BTree(i);
 //			tree.addAll(tree);
 //			break;
-		case 12:
+		case 10:
 			println("BinaryTree clone: ");
 			println(original.deepClone());
 			break;		
-		case 13:
+		case 11:
 			original.printInorder();
 			break;
-		case 14:
+		case 12:
 			original.printPostorder();
 			break;
-		case 15:
+		case 13:
 			original.printPreorder();
 			break;
-		case 16:
+		case 14:
 			original.printLevelorder();
 			break;
 		default:
@@ -133,5 +135,6 @@ public class BTreeMenu {
 		println();
 		readLine();
 
+		}
 	}
 }

@@ -3,7 +3,7 @@ package de.hsMannheim.informatik.tpe.ss17.repo27.uebung1;
 import static gdi.MakeItSimple.*;
 
 public class B_Tree implements BTree {// implements B_Baum{
-	private int ordnung;
+	private int order;
 	private BTreeNode root = null;
 
 	public static void main(String[] args) {
@@ -47,7 +47,7 @@ public class B_Tree implements BTree {// implements B_Baum{
 	 * @param ordnung
 	 */
 	public B_Tree(int ordnung) {
-		this.ordnung = ordnung;
+		this.order = ordnung;
 		this.root = null;
 	}
 
@@ -65,10 +65,14 @@ public class B_Tree implements BTree {// implements B_Baum{
 			return false;
 		else {
 			if (root == null) {
-				root = new BTreeNode(this.ordnung);
+				root = new BTreeNode(this.order);
 			}
 
-			return root.insert(o);
+			boolean splitIsNeeded = root.insert(o);
+			 if (splitIsNeeded){
+				 
+			 }
+			 return true;//****
 		}
 	}
 
@@ -232,24 +236,48 @@ public class B_Tree implements BTree {// implements B_Baum{
 
 	@Override
 	public void printPostorder() {
-		// TODO Auto-generated method stub
+		if(root != null) {
+			root.printPostorder();
+		}
+		
+		println();
 
 	}
 
 	@Override
 	public void printPreorder() {
-		// TODO Auto-generated method stub
+		if(root != null) {
+			root.printPreorder();
+		}
+		
+		println();
 
 	}
 
 	@Override
 	public void printLevelorder() {
-		// TODO Auto-generated method stub
+		if(root != null) {
+			int height = root.height();
+			for(int i = 0; i < height; i++) {
+				root.printLevelorder(root, i);
+				
+				System.out.println("");
+			}
+		}
+		
+		println();
 
 	}
 
 	public B_Tree deepClone() {
-
+		if(this.root == null){
+			return null;
+		}
+		else if(this.root != null){
+			B_Tree newTree = new B_Tree(this.order);
+			
+			//return newTree.root.deepClone();
+		}
 		return null;
 	}
 
