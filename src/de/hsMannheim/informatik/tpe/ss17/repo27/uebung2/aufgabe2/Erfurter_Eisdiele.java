@@ -1,4 +1,4 @@
-package de.hsMannheim.informatik.tpe.ss17.repo27.uebung2;
+package de.hsMannheim.informatik.tpe.ss17.repo27.uebung2.aufgabe2;
 
 public class Erfurter_Eisdiele {
 
