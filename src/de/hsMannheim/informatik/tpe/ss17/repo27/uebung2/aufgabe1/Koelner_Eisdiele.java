@@ -94,7 +94,9 @@ public class Koelner_Eisdiele extends Eisdiele{
 		println("koelsch: Auf Wiedersehen! Und lassen Sie sich ihr Eis schmecken!");
 		
 	}
-
+	/**
+	 * Error message if something is wrong
+	 */
 	@Override
 	void entschuldigen() {
 		println("koelsch: Entschulden Sie, aber die von Ihnen ausgewählte Sorte haben wir leider nicht zur verfügung!");
