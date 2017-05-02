@@ -10,7 +10,10 @@ public class CrypterReverse implements Crypter{
 		String g = cryp.decrypt(f);
 		System.out.println(g);
 	}
-	
+	/**
+	 * @param  message to encrypt in reverse
+	 * @return the encrypted message
+	 */
 	@Override
 	public String encrypt(String message) {
 		
@@ -23,7 +26,7 @@ public class CrypterReverse implements Crypter{
 			return encrypted;
 		}
 	/**
-	 * @param  message to decrypt
+	 * @param  message to decrypt in reverse
 	 * @return the decrypted message
 	 */
 		public String decrypt(String cypherText) {

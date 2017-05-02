@@ -44,8 +44,10 @@ public class CrypterCaesar implements Crypter{
 	
 	
 	
-	
-	
+	/**
+	 * @param  message to encrypt in caesar
+	 * @return the encrypted message
+	 */
 	@Override
 	public String encrypt(String message) {
 		
@@ -76,7 +78,10 @@ public class CrypterCaesar implements Crypter{
 		
 		return encrypted;
 	}
-
+	/**
+	 * @param  message to decrypt in caesar
+	 * @return the decrypted message
+	 */
 	@Override
 	public String decrypt(String cypherText) {
 
