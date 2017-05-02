@@ -6,6 +6,9 @@ import java.util.Arrays;
 
 public class Menue_Sortieren {
 
+	/**
+	 * select which array are to be created and with how many elements
+	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		println("Bitte wählen Sie nun aus, was für Elemente Sie in das Array einfügen wollen!");
@@ -49,7 +52,11 @@ public class Menue_Sortieren {
 			break;
 		};
 	}
-
+	/**
+	 * convert int array to MyInt-Object
+	 * @param array -> int array to convert in MyInt-Object
+	 * @return in MyInt converted array
+	 */
 	private static MyInt[] MyIntArray(int[] array) {
 
 		MyInt[] myInt = new MyInt[array.length];
@@ -60,7 +67,11 @@ public class Menue_Sortieren {
 
 		return myInt;
 	}
-	
+	/**
+	 * convert int array to MyString-Object
+	 * @param array ->  string array to convert in MyInt-Object
+	 * @return in MyString converted array
+	 */
 	private static MyString[] MyString(String[] array) {
 
 		MyString[] myString = new MyString[array.length];
@@ -72,6 +83,10 @@ public class Menue_Sortieren {
 		return myString;
 	}
 
+	/**
+	 * Which sorting procedure should be selected
+	 * @param array -> unsorted array
+	 */
 	public static void auswahl_Sortierverfahren(Comparable[] array) {
 
 		println("Bitte wählen sie nun aus, welches Sortierverfahren Sie benutzen wollen!");
@@ -95,7 +110,11 @@ public class Menue_Sortieren {
 		};
 
 	}
-
+	/**
+	 * procedure of selected sorting 
+	 * @param sortAlgorithm -> Selected sorting method
+	 * @param array -> unsorted array to convert in sorted array
+	 */
 	private static void sortArray(int sortAlgorithm, Comparable[] array) {
 
 		print("Ihre eingegebenen Daten (\"Unsortiert\"): ");

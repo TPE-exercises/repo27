@@ -4,19 +4,26 @@ public class MyInt implements Comparable{
 
 	private int value;
 
-	//Contructor for set value
+	/**
+	 * Contructor for set value
+	 * @param value - int elements
+	 */
 	public MyInt(int value) {
 
 		this.value = value;
 	}
 
-	//set value
+	/**
+	 * @param value to set
+	 */
 	public void setValue(int value) {
 
 		this.value = value;
 	}
 
-	//return value
+	/**
+	 * @return int value
+	 */
 	public int getValue() {
 
 		return value;
@@ -35,7 +42,9 @@ public class MyInt implements Comparable{
 			return 0;
 		}
 	}
-
+	/**
+	 * output int value
+	 */
 	@Override
 	public String toString() {
 

@@ -3,10 +3,9 @@ import static gdi.MakeItSimple.*;
 
 public class Erfurter_Eisdiele extends Eisdiele{
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
+	/**
+	 * Ordering process for the Erfurter ice cream parlor
+	 */
 
 	@Override
 	public Eis erstellen(String typ) {

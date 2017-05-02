@@ -1,3 +1,4 @@
+
 package de.hsMannheim.informatik.tpe.ss17.repo27.uebung2.aufgabe1;
 
 import static gdi.MakeItSimple.*;
@@ -16,6 +17,10 @@ public class Menue{
 	static Eisdiele ed = new Erfurter_Eisdiele();
 	static Eisdiele ed2 = new Koelner_Eisdiele();
 	static Eisdiele ed3 = new Mannheimer_Eisdiele();
+	
+	/**
+	 * Select the city where are you and choose the ice cream what are you want
+	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
@@ -24,7 +29,6 @@ public class Menue{
 		println("2. Köln");
 		println("3. Mannheim");
 		edauswahl = readInt();
-		
 		
 		println();		
 		println("=====Eiskarte=====");

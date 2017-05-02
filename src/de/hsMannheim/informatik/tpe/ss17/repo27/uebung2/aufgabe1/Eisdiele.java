@@ -85,7 +85,9 @@ public abstract class Eisdiele {
 	 abstract void verabschieden();
 		//println("Auf Wiedersehen! Und lassen Sie sich ihr Eis schmecken!");
 	
-
+	/**
+	* Error message if something is wrong
+	*/
 	abstract void entschuldigen();
 		//println("Entschulden Sie, aber die von Ihnen ausgewählte Sorte haben wir leider nicht zur verfügung!");
 

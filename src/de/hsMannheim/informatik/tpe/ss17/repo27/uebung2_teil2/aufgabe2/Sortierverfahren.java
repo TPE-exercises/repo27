@@ -5,7 +5,11 @@ import java.util.Arrays;
 import java.lang.*;
 
 public class Sortierverfahren implements Comparable {
-
+	
+	/**
+	 * test menue for the sorting process
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 //		Comparable[] integer = { 10, 4, 1, 3, 2, 6, 7, 32, 11 };
@@ -27,7 +31,10 @@ public class Sortierverfahren implements Comparable {
 //		print("Shaker Sort: ");
 //		shakerSort(string);
 	}
-
+	/**
+	 * unsorted array are sorted with the insertionSort algorithm
+	 * @param list -> unsorted array
+	 */
 	public static void insertionSort(Comparable[] list) {
 		for (int index = 0; index < list.length; index++) {
 			Comparable key = list[index];
@@ -44,7 +51,10 @@ public class Sortierverfahren implements Comparable {
 		}
 		println(Arrays.toString(list));
 	}
-
+	/**
+	 * unsorted array are sorted with the shakerSort algorithm
+	 * @param array ->unsorted array
+	 */
 	public static void shakerSort(Comparable[] array) {
 	    for (int i = 0; i < array.length/2; i++) {
 	        boolean swapped = false;

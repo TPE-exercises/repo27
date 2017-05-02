@@ -4,18 +4,23 @@ public class MyString implements Comparable {
 
 	private String string;
 
-	//Contructor for set value
-	public MyString(String string) {
+	/**
+	 * Contructor for set value
+	 * @param value - string elements
+	 */	public MyString(String string) {
 		this.string = string;
 	}
 
-	//set value
-	public void setString(String string) {
+	 /**
+	 * @param value to set
+	 */
+	 public void setString(String string) {
 		this.string = string;
 	}
 
-	//return value
-	public String getString() {
+	 /**
+	 * @return int value
+	 */	public String getString() {
 		return string;
 	}
 
@@ -25,6 +30,9 @@ public class MyString implements Comparable {
 		return string.compareTo((String) o.toString());
 	}
 
+	/**
+	 * output String value
+	 */
 	@Override
 	public String toString() {
 		return string;

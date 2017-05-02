@@ -3,11 +3,9 @@ package de.hsMannheim.informatik.tpe.ss17.repo27.uebung2.aufgabe1;
 
 public class Koelner_Eisdiele extends Eisdiele{
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
-
+	/**
+	 * Ordering process for the Kölner ice cream parlor
+	 */
 	@Override
 	public Eis erstellen(String typ) {
 		

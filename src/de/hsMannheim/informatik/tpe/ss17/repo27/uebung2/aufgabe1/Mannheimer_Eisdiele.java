@@ -2,11 +2,9 @@ package de.hsMannheim.informatik.tpe.ss17.repo27.uebung2.aufgabe1;
 import static  gdi.MakeItSimple.*;
 public class Mannheimer_Eisdiele extends Eisdiele{
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
-
+	/**
+	 * Ordering process for the Mannheimer ice cream parlor
+	 */
 	@Override
 	public Eis erstellen(String typ) {
 		
@@ -95,7 +93,9 @@ public class Mannheimer_Eisdiele extends Eisdiele{
 		println("mannheimerisch: Auf Wiedersehen! Und lassen Sie sich ihr Eis schmecken!");
 		
 	}
-
+	/**
+	 * Error message if something is wrong
+	 */
 	@Override
 	void entschuldigen() {
 		println("mannheimerisch: Entschulden Sie, aber die von Ihnen ausgewählte Sorte haben wir leider nicht zur verfügung!");
