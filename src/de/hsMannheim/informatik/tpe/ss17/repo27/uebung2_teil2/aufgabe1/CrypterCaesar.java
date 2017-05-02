@@ -1,56 +1,107 @@
 package de.hsMannheim.informatik.tpe.ss17.repo27.uebung2_teil2.aufgabe1;
 
-import static gdi.MakeItSimple.*;
-
 public class CrypterCaesar implements Crypter{
+
 	
-	static Crypter x = new CrypterCaesar();
-	static String wort;
+	private static char clear[] ={'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+	private static char secret[] ={'D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','A','B','C'};
+	private static int caesarCryptPower = 0;
 	
+	
+	
+	//die Main-methode löst die Aufgabe d) 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		println("Bitte geben Sie hier ihr passwort ein!");
-		wort = readLine();
-		String s = x.encrypt(wort);
-		println(s);
-		String z = x.decrypt(s);
-		println(z);
-	}
-	
-	public String encrypt(String message) {
-		print("encrypt: ");
-		char[] c = message.toCharArray();
-		int umwandeln;
-		for(int i=0; i<message.length();i++){
-			if((int)c[i] == (int) 'x' || (int)c[i] == (int) 'y' || (int)c[i] == (int) 'z'){
-				umwandeln = (int) c[i] - 55;
-			}
-			else{
-				umwandeln = (int) c[i] - 29;
-			}
-			c[i]=(char)umwandeln;
-		}
-		String neuesWort = String.valueOf(c);	
-		return neuesWort;
+		
+
+		
+		Crypter cryp1 = new CrypterCaesar();
+		Crypter cryp2 = new CrypterReverse();
+		String wort = "XHMSNYYXYJQQJS";
+		wort = cryp2.decrypt(wort);
+
+		System.out.println(wort);
+		setPower(2);
+		wort = cryp1.decrypt(wort);
+		setPower(0);
+		System.out.println(wort);
+		
+		wort = cryp2.decrypt(wort);
+		
+		System.out.println(wort);
+
 	}
 
-	public String decrypt(String cypherText) {
-		print("decrypt: ");
-		char[] c = cypherText.toCharArray();
-		int umwandeln;
+	private static void println(String f) {
+		// TODO Auto-generated method stub
 		
-		for(int i=0; i<cypherText.length();i++){
-			if((int)c[i] == (int) 'A' || (int)c[i] == (int) 'B' || (int)c[i] == (int) 'C'){
-				umwandeln = (int) c[i] + 55;
-			}
-			else{
-			umwandeln = (int) c[i] + 29;
-			}
+	}
+
+	//adjust Key-power, (Key 5 =2, Key 3 =0, Key 0 =-3) -> key 5 = 3 + (2)
+	public static void setPower (int var){
+		caesarCryptPower = var;
+	}
+	
+	
+	
+	
+	
+	
+	@Override
+	public String encrypt(String message) {
+		
+		String encrypted = "";
+		
+		for(int i=0; i < message.length() ;i++){
+			char a = message.charAt(i);
 			
-			c[i]=(char)umwandeln;
+			for(int p=0; p<26;p++){
+				if(a == clear[p]){	
+					//check for overflow and set p with Key-power
+					if(p + caesarCryptPower > 26)
+						p=p + caesarCryptPower-26;
+					else if(p + caesarCryptPower < 0)
+							p=p + caesarCryptPower+26;
+					else
+						p= p +caesarCryptPower;
+					
+					//add char to encrpyted string
+					encrypted += secret[p];
+					
+					println(encrypted);
+					p=100;
+				}
+			}
 		}
-		String neuesWort = String.valueOf(c);	
-		return neuesWort;
+		
+		
+		return encrypted;
+	}
+
+	@Override
+	public String decrypt(String cypherText) {
+
+		String decrypted = "";
+		//check for overflow and set p with Key-power
+		for(int i=0; i < cypherText.length() ;i++){
+			char a = cypherText.charAt(i);
+			for(int p=0; p<26;p++){
+				if(a == secret[p]){
+					if(p - caesarCryptPower > 26)
+						p=p - caesarCryptPower-26;
+					else if(p - caesarCryptPower < 0)
+							p=p - caesarCryptPower+26;
+					else
+						p= p - caesarCryptPower;
+				
+					//add char to decrpyted string
+					decrypted += clear[p];
+					p=100;
+				}
+			}
+		}
+		
+		
+		return decrypted;
 	}
 
 }

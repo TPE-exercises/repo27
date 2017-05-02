@@ -1,6 +1,6 @@
 package de.hsMannheim.informatik.tpe.ss17.repo27.uebung2_teil2.aufgabe1;
 
-public interface Crypter {
+interface Crypter {
 
 	public String encrypt(String message);
 	
