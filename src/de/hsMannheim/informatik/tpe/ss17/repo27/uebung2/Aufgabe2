@@ -1,0 +1,25 @@
+Was muss hier geschehen?:
+In der Klasse Eisdiele erstellen wir nur in der Bestell Methode ein spezielles Objekt eis.
+Die reslichen Methoden werden nur so wie z.B. in Interfaces dargestellt und werden nicht ausprogrammiert bzw. wir wissen nur das die existieren aber wissen
+nicht, wie sie funktonieren.
+
+Brauchen Sie zusätzliche Klassen und Methoden?:
+Ja, wir haben zusätzliche Klasse gebraucht, um für jede Stadt eine eigene Eisdiele zu erstellen.
+Und wir haben auch die zusätzliche Methode public abstract Eis erstellen(Sting typ) hinzugefügt.
+	
+	
+Was muss in Ihrer main() passieren um die jeweiligen lokalen Eisdielen anzusprechen?:
+Für die einfache Auswahl der Städter haben wir ein Hauptmenü erstellen, indem wir mit Konsoleneingaben die gewünschte Stadt auswählen können.
+Daraufhin erstellen wir für jede lokale Eisdiele bzw. für jede Stadt für das gewünschte Eis ein Eisobjekt.
+
+
+Müssen Sie bestehende Methoden ändern oder verlagern? 
+Die bestehenden Methoden Eis und Eisdiele müssen komplett auseinandergezogen werden und auf die 
+abstrakte Oberklasse und die Unterklasse aufgeteilt werden. 
+
+
+Notieren Sie die Vorteile dieser Lösung in Aufgabe 2 gegenüber der Lösung von Aufgabe 1.
+In Aufgabe 1 war es nur möglich eine Eisdiele zu bedienen/erstellen, es sei den man kopiert den gesamten Code und 
+ändere die Ausgabewerte --> Redundanter Code.
+Nun ist es möglich, mit sehr wenig aufwand beliebig viele weitere Eisdielen in jeder Region zu erstellen. Somit sparen wir zeit und machen weniger fehler
+bei auftretenden Fehlern bzw. die die Produkftpflege für zukünftige Eissorten bleibt für uns einfacher.
