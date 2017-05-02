@@ -8,24 +8,24 @@ public class Sortierverfahren implements Comparable {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Comparable[] integer = { 10, 4, 1, 3, 2, 6, 7, 32, 11 };
-		Comparable[] string = {"Traube", "Birne", "Apfel", "Banane", "Kiwi", "Mango" };
-
-		print("Unsortiert Integer: ");
-		println(Arrays.toString(integer));
-		print("Insertion Sort: ");
-		insertionSort(integer);
-		print("Shaker Sort: ");
-		shakerSort(integer);
-		
-		println("");
-		
-		print("Unsortiert String: ");
-		println(Arrays.toString(string));
-		print("Insertion Sort: ");
-		insertionSort(string);
-		print("Shaker Sort: ");
-		shakerSort(string);
+//		Comparable[] integer = { 10, 4, 1, 3, 2, 6, 7, 32, 11 };
+//		Comparable[] string = {"Traube", "Birne", "Apfel", "Banane", "Kiwi", "Mango" };
+//
+//		print("Unsortiert Integer: ");
+//		println(Arrays.toString(integer));
+//		print("Insertion Sort: ");
+//		insertionSort(integer);
+//		print("Shaker Sort: ");
+//		shakerSort(integer);
+//		
+//		println("");
+//		
+//		print("Unsortiert String: ");
+//		println(Arrays.toString(string));
+//		print("Insertion Sort: ");
+//		insertionSort(string);
+//		print("Shaker Sort: ");
+//		shakerSort(string);
 	}
 
 	public static void insertionSort(Comparable[] list) {
