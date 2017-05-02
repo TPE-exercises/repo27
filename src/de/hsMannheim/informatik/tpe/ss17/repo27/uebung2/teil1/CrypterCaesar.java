@@ -33,7 +33,7 @@ public class CrypterCaesar implements Crypter{
 		
 	}
 
-	//adjust Key-power, (Key 5 =2, Key 3 =0, Key 0 =-3)
+	//adjust Key-power, (Key 5 =2, Key 3 =0, Key 0 =-3) -> key 5 = 3 + (2)
 	public static void setPower (int var){
 		caesarCryptPower = var;
 	}
