@@ -1,4 +1,4 @@
-package de.hsMannheim.informatik.tpe.ss17.repo27.uebung2.aufgabe1;
+package de.hsMannheim.informatik.tpe.ss17.repo27.uebung2;
 
 import static gdi.MakeItSimple.*;
 
@@ -81,7 +81,9 @@ public abstract class Eisdiele {
 //			}
 //		}
 	
-
+	/**
+	 * Say goodbye after they have paid
+	 */
 	 abstract void verabschieden();
 		//println("Auf Wiedersehen! Und lassen Sie sich ihr Eis schmecken!");
 	

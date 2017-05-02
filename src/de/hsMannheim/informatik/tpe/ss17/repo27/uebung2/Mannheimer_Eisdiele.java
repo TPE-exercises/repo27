@@ -1,10 +1,9 @@
-package de.hsMannheim.informatik.tpe.ss17.repo27.uebung2.aufgabe1;
- import static gdi.MakeItSimple.*;
-
-public class Koelner_Eisdiele extends Eisdiele{
+package de.hsMannheim.informatik.tpe.ss17.repo27.uebung2;
+import static  gdi.MakeItSimple.*;
+public class Mannheimer_Eisdiele extends Eisdiele{
 
 	/**
-	 * Ordering process for the Kˆlner ice cream parlor
+	 * Ordering process for the Mannheimer ice cream parlor
 	 */
 	@Override
 	public Eis erstellen(String typ) {
@@ -25,7 +24,7 @@ public class Koelner_Eisdiele extends Eisdiele{
 			eis.setArt("Spaghettis");
 			String[] sorten = { "Vanille" };
 			eis.setSorten(sorten);
-			String[] extras = { "Sahne", "Erdbeersoﬂe", "weiﬂe Schokolade Raspeln" };
+			String[] extras = { "Sahne", "Erdbeersoﬂe", "weiﬂe Schokolade Raspeln", "Monnemer Dreck" };
 			eis.setExtras(extras);
 		}
 
@@ -36,7 +35,7 @@ public class Koelner_Eisdiele extends Eisdiele{
 			eis.setArt("Bananasplit");
 			String[] sorten = { "Vanille", "Banane" };
 			eis.setSorten(sorten);
-			String[] extras = { "Bananen", "Sahne", "Schokoladen-Kokos-Soﬂe", "Bierteig-Waffel" };
+			String[] extras = { "Bananen", "Sahne", "Schokosoﬂe", "Kekse" };
 			eis.setExtras(extras);
 		}
 
@@ -63,35 +62,37 @@ public class Koelner_Eisdiele extends Eisdiele{
 
 	@Override
 	void begruessen() {
-		println("koelsch: Hallo und Herzlich Willkommen zu unserer Eisdiele!");
-		println("koelsch: Ihr Eis kommt sofort!");
+		println("mannheimerisch: Hallo und Herzlich Willkommen zu unserer Eisdiele!");
+		println("mannheimerisch: Ihr Eis kommt sofort!");
 		
 	}
 
 	@Override
 	void kassieren(double preis) {
 		
-		println("koelsch: Das macht dann " + preis + "Ä");
-		println("koelsch: Bitte geben Sie jetzt Ihre Summe ein!");
+		println("mannheimerisch: Das macht dann " + preis + "Ä");
+		println("mannheimerisch: Bitte geben Sie jetzt Ihre Summe ein!");
 		double eingabe = 0.0;
 		while (eingabe != preis) {
 			double geld = readFloat();
 			eingabe = eingabe + geld;
 			double restgeld = eingabe - preis;
 			if (restgeld < 0) {
-				println("koelsch: Es fehlen noch " + (restgeld * (-1)) + "Ä");
+				println("mannheimerisch: Es fehlen noch " + (restgeld * (-1)) + "Ä");
 
 			} else {
-				println("koelsch: Sie bekommen noch " + restgeld + "Ä zur¸ck!");
+				println("mannheimerisch: Sie bekommen noch " + restgeld + "Ä zur¸ck!");
 				verabschieden();
 			}
 		}
 		
 	}
-
+	/**
+	 * Say goodbye after they have paid
+	 */
 	@Override
 	void verabschieden() {
-		println("koelsch: Auf Wiedersehen! Und lassen Sie sich ihr Eis schmecken!");
+		println("mannheimerisch: Auf Wiedersehen! Und lassen Sie sich ihr Eis schmecken!");
 		
 	}
 	/**
@@ -99,9 +100,8 @@ public class Koelner_Eisdiele extends Eisdiele{
 	 */
 	@Override
 	void entschuldigen() {
-		println("koelsch: Entschulden Sie, aber die von Ihnen ausgew‰hlte Sorte haben wir leider nicht zur verf¸gung!");
-	
+		println("mannheimerisch: Entschulden Sie, aber die von Ihnen ausgew‰hlte Sorte haben wir leider nicht zur verf¸gung!");
+		
 	}
-
 
 }

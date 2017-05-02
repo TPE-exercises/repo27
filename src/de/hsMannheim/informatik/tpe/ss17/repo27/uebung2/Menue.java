@@ -1,5 +1,5 @@
 
-package de.hsMannheim.informatik.tpe.ss17.repo27.uebung2.aufgabe1;
+package de.hsMannheim.informatik.tpe.ss17.repo27.uebung2;
 
 import static gdi.MakeItSimple.*;
 

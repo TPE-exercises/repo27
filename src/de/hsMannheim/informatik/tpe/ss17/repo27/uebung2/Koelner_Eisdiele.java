@@ -1,12 +1,11 @@
-package de.hsMannheim.informatik.tpe.ss17.repo27.uebung2.aufgabe1;
-import static gdi.MakeItSimple.*;
+package de.hsMannheim.informatik.tpe.ss17.repo27.uebung2;
+ import static gdi.MakeItSimple.*;
 
-public class Erfurter_Eisdiele extends Eisdiele{
+public class Koelner_Eisdiele extends Eisdiele{
 
 	/**
-	 * Ordering process for the Erfurter ice cream parlor
+	 * Ordering process for the Kölner ice cream parlor
 	 */
-
 	@Override
 	public Eis erstellen(String typ) {
 		
@@ -37,7 +36,7 @@ public class Erfurter_Eisdiele extends Eisdiele{
 			eis.setArt("Bananasplit");
 			String[] sorten = { "Vanille", "Banane" };
 			eis.setSorten(sorten);
-			String[] extras = { "Bananen", "Sahne", "Schokosoße", "Kekse" };
+			String[] extras = { "Bananen", "Sahne", "Schokoladen-Kokos-Soße", "Bierteig-Waffel" };
 			eis.setExtras(extras);
 		}
 
@@ -48,7 +47,7 @@ public class Erfurter_Eisdiele extends Eisdiele{
 			eis.setArt("Nussbecher");
 			String[] sorten = { "Vanille", "Schoko", "Nuss" };
 			eis.setSorten(sorten);
-			String[] extras = { "Nüsse", "Krokant", "Sahne", "Schokosoße","Eierlikör", "Kekse" };
+			String[] extras = { "Nüsse", "Sahne", "Schoko-/Karamelsoße", "Kekse" };
 			eis.setExtras(extras);
 		}
 
@@ -58,41 +57,43 @@ public class Erfurter_Eisdiele extends Eisdiele{
 		kassieren(eis.preis);
 		
 		}
-		
 		return eis;
 	}
 
+
 	@Override
 	void begruessen() {
-		println("thüringisch: Hallo und Herzlich Willkommen zu unserer Eisdiele!");
-		println("thüringisch: Ihr Eis kommt sofort!");
+		println("koelsch: Hallo und Herzlich Willkommen zu unserer Eisdiele!");
+		println("koelsch: Ihr Eis kommt sofort!");
 		
 	}
 
 	@Override
 	void kassieren(double preis) {
 		
-		println("thüringisch: Das macht dann " + preis + "€");
-		println("thüringisch: Bitte geben Sie jetzt Ihre Summe ein!");
+		println("koelsch: Das macht dann " + preis + "€");
+		println("koelsch: Bitte geben Sie jetzt Ihre Summe ein!");
 		double eingabe = 0.0;
 		while (eingabe != preis) {
 			double geld = readFloat();
 			eingabe = eingabe + geld;
 			double restgeld = eingabe - preis;
 			if (restgeld < 0) {
-				println("thüringisch: Es fehlen noch " + (restgeld * (-1)) + "€");
+				println("koelsch: Es fehlen noch " + (restgeld * (-1)) + "€");
 
 			} else {
-				println("thüringisch: Sie bekommen noch " + restgeld + "€ zurück!");
+				println("koelsch: Sie bekommen noch " + restgeld + "€ zurück!");
 				verabschieden();
 			}
 		}
 		
 	}
-
+	/**
+	 * Say goodbye after they have paid
+	 */
 	@Override
 	void verabschieden() {
-		println("thüringisch: Auf Wiedersehen! Und lassen Sie sich ihr Eis schmecken!");
+		println("koelsch: Auf Wiedersehen! Und lassen Sie sich ihr Eis schmecken!");
 		
 	}
 	/**
@@ -100,8 +101,9 @@ public class Erfurter_Eisdiele extends Eisdiele{
 	 */
 	@Override
 	void entschuldigen() {
-		println("thüringisch: Entschulden Sie, aber die von Ihnen ausgewählte Sorte haben wir leider nicht zur verfügung!");
-		
+		println("koelsch: Entschulden Sie, aber die von Ihnen ausgewählte Sorte haben wir leider nicht zur verfügung!");
+	
 	}
+
 
 }
