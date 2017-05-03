@@ -6,6 +6,9 @@ import java.util.Arrays;
 
 public class Menue_Sortieren {
 
+	
+	static Sort insertionSort = new InsertionSort();
+	static Sort shakerSort = new ShakerSort();
 	/**
 	 * select which array are to be created and with how many elements
 	 */
@@ -96,13 +99,14 @@ public class Menue_Sortieren {
 		int auswahlS_Verfahren = readInt();
 		switch (auswahlS_Verfahren) {
 		case 1:
-			sortArray(1, array);
+			sortArray(insertionSort, array);
 			break;
 		case 2:
-			sortArray(2, array);
+			sortArray(shakerSort, array);
 			break;
 		case 3:
-			sortArray(3, array);
+			sortArray(insertionSort, array);
+			sortArray(shakerSort, array);
 			break;
 		default:
 			println("Auswahl nich gefunden");
@@ -115,28 +119,28 @@ public class Menue_Sortieren {
 	 * @param sortAlgorithm -> Selected sorting method
 	 * @param array -> unsorted array to convert in sorted array
 	 */
-	private static void sortArray(int sortAlgorithm, Comparable[] array) {
+	private static void sortArray(Sort s, Comparable[] array) {
 
 		print("Ihre eingegebenen Daten (\"Unsortiert\"): ");
 		println(Arrays.toString(array));
-		switch (sortAlgorithm) {
-		case 1:
-			print("Insertion-Sort: ");
-			Sortierverfahren.insertionSort(array);
-			break;
-		case 2:
-			print("Shaker-Sort: ");
-			Sortierverfahren.shakerSort(array);
-			break;
-		case 3:
-			print("Insertion-Sort: ");
-			Sortierverfahren.insertionSort(array);
-			print("Shaker-Sort: ");
-			Sortierverfahren.shakerSort(array);
-			break;
-		default:
-			break;
-		};
+//		switch (sortAlgorithm) {
+//		case 1:
+//			print("Insertion-Sort: ");
+			s.sort(array);
+//			break;
+//		case 2:
+//			print("Shaker-Sort: ");
+//			shakerSort.sort(array);
+//			break;
+//		case 3:
+//			print("Insertion-Sort: ");
+//			insertionSort.sort(array);
+//			print("Shaker-Sort: ");
+//			shakerSort.sort(array);
+//			break;
+//		default:
+//			break;
+//		};
 
 	}
 }

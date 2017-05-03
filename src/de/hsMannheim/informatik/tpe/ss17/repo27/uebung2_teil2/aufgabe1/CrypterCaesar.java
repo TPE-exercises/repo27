@@ -16,19 +16,21 @@ public class CrypterCaesar implements Crypter{
 		
 		Crypter cryp1 = new CrypterCaesar();
 		Crypter cryp2 = new CrypterReverse();
-		String wort = "XHMSNYYXYJQQJS";
+		String wort = "ab";
 		wort = cryp2.decrypt(wort);
-
-		System.out.println(wort);
-		setPower(2);
+		
+		System.out.println("1." +wort);
+		setPower(26);
+		wort = cryp1.encrypt(wort);
+//		setPower(0);
+		System.out.println("2." +wort);
+		
+		wort = cryp2.decrypt(wort);
+		
+		System.out.println("3." +wort);
 		wort = cryp1.decrypt(wort);
-		setPower(0);
-		System.out.println(wort);
 		
-		wort = cryp2.decrypt(wort);
-		
-		System.out.println(wort);
-
+		System.out.println("4." +wort);
 	}
 
 	private static void println(String f) {
@@ -59,7 +61,7 @@ public class CrypterCaesar implements Crypter{
 			for(int p=0; p<26;p++){
 				if(a == clear[p]){	
 					//check for overflow and set p with Key-power
-					if(p + caesarCryptPower > 26)
+					if(p + caesarCryptPower >= 26)
 						p=p + caesarCryptPower-26;
 					else if(p + caesarCryptPower < 0)
 							p=p + caesarCryptPower+26;
@@ -91,7 +93,7 @@ public class CrypterCaesar implements Crypter{
 			char a = cypherText.charAt(i);
 			for(int p=0; p<26;p++){
 				if(a == secret[p]){
-					if(p - caesarCryptPower > 26)
+					if(p - caesarCryptPower >= 26)
 						p=p - caesarCryptPower-26;
 					else if(p - caesarCryptPower < 0)
 							p=p - caesarCryptPower+26;
