@@ -8,20 +8,19 @@ public class CaesarWriter extends FilterWriter {
 	static char buchstaben[] = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q',
 			'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
 			'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'Ä', 'Ö', 'Ü', 'ä', 'ö', 'ü' };
-
-	public static void main(String[] args) throws IOException {
-		
-		CaesarWriter cw;
-		cw = new CaesarWriter(5, new FileWriter("test.txt"));
+	private int verschiebung;
+	
+//	public static void main(String[] args) throws IOException {
+//		
+//		CaesarWriter cw;
+//		cw = new CaesarWriter(5, new FileWriter("test.txt"));
 //		cw.write(65);
 //		cw.write(90);
 //		cw.newLine();
-		String x = "H";
-		cw.write(x,0,x.length());
-		cw.close();
-	}
-
-	private int verschiebung;
+//		String x = readLine();
+//		cw.write(x,0,x.length());
+//		cw.close();
+//	}
 
 	public CaesarWriter(int anzVerschiebung, Writer out) {
 		super(out);
@@ -33,10 +32,10 @@ public class CaesarWriter extends FilterWriter {
 		super.write(x);
 	}
 
-	public void write(char[] c, int off, int len) throws IOException {
-		char [] x  = this.encrypt(c, this.verschiebung);
+	public void write(char[] cbuf, int off, int len) throws IOException {
+		char [] x  = this.encrypt(cbuf, this.verschiebung);
 		for (int i = 0; i < len; ++i) {
-			write(c[off + i]);
+			write(cbuf[off + i]);
 		}
 	}
 
