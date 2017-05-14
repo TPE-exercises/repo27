@@ -118,7 +118,8 @@ public class QueueArray implements Queue,ADT {
 		String string = "ADT : ";
 		
 		for(int i = 0 ; i < values.length; i++){
-		string +=   values[i] +" ";
+			if(values[i] != null)
+			string +=   values[i] +" ";
 		}
 		
 		return string;
