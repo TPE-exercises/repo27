@@ -10,8 +10,7 @@ public class CaesarFileEncryptor implements IFileEncryptor {
 	static String pfad = "C:\\Users\\ISTEGAL\\workspace\\test";
 	static String newFolderNameDecrypted = pfad + "_decrypted";
 	static String newFolderNameEncrypted = pfad + "_encrypted";
-	
-	
+
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		File f = new File(pfad);
@@ -93,7 +92,7 @@ public class CaesarFileEncryptor implements IFileEncryptor {
 		f.mkdir();
 		FileReader fr = new FileReader(sourceDirectory);
 		BufferedReader br = new BufferedReader(fr);
-		
+
 		CaesarWriter cw = new CaesarWriter(0, new FileWriter(f + "\\" + fileName));
 		CaesarReader cr = new CaesarReader(anzVerschiebung, new FileReader(newFolderNameEncrypted + "\\" + fileName));
 
@@ -101,10 +100,10 @@ public class CaesarFileEncryptor implements IFileEncryptor {
 		try {
 			do {
 				zeile = br.readLine();
-				char [] cbuf = new char[zeile.length()+2];
+				char[] cbuf = new char[zeile.length() + 2];
 				cr.read(cbuf);
 				cw.write(new String(cbuf));
-				
+
 			} while (zeile != null);
 
 		} catch (NullPointerException e) {
