@@ -1,0 +1,7 @@
+Catch-Or-Throw-Regel
+
+Sobald eine Exception ausgelöst wird, verfolgt sie den Aufrufstapel herrunter bis zu der Stelle wo sie einen "catch" findet. 
+Falls ein "catch" gefunden wird, wird geschaut ob dieser "catch" Exception dieser Klasse umsetzten/fangen kann, und wenn dies der Fall ist wird dieser 
+"catch"-Block aufgeführt. Anderenfalls wird die Exception weiter den Aufrufstapel heruntergehen und schaut solange bis sie den passen 
+"catch"-Block findet oder das Ende des Aufrufstapels gefunden hat, und somit zum Programmabbruch führt.
+ 

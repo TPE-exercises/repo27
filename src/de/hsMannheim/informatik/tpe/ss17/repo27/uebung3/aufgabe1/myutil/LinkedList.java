@@ -1,4 +1,4 @@
-package de.hsMannheim.informatik.tpe.ss17.repo27.uebung3.aufgabe1;
+package de.hsMannheim.informatik.tpe.ss17.repo27.uebung3.aufgabe1.myutil;
 
 class Node {
 	Object val; // contains nodes of any kind
@@ -70,6 +70,18 @@ public class LinkedList {
 		}
 	}
 
+	public void addFirst(Object val) {
+
+		// inserts val at a new element at head of the list
+		
+
+		if (head == null)
+			head = new Node(val, null);
+		else {
+			head = new Node(val, head);
+		}
+}
+	
 	public boolean isEmpty() {
 		return head == null;
 	}
@@ -106,7 +118,7 @@ public class LinkedList {
 		if (noe == 0) return 0; // nothing to print
 
 		while (cnt < noe - 1) { // print all elements but last
-			System.out.print(p + ", ");
+			System.out.print(p + " ");
 			p = p.getNext();
 			cnt++;
 		}
