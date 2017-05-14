@@ -8,7 +8,7 @@ public class Main {
 
 		public static void main(String[] args) throws OverflowException, UnderflowException {
 			
-			//Userinteraction for choosing of ADT
+			//userinteraction for choosing of ADT
 			ADT currentADT = selectionOfADT();
 			boolean menue = true;
 			
