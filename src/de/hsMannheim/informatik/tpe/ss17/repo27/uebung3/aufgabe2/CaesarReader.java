@@ -12,7 +12,18 @@ public class CaesarReader extends FilterReader {
 
 	public static void main(String[] args) throws IOException {
 		
-		
+//		CaesarReader caesarReader = new CaesarReader(0, new FileReader("test.txt"));
+//		BufferedReader br = new BufferedReader(caesarReader);
+//		String zeile = "";
+//
+//	    do
+//	    {
+//	      zeile = br.readLine();
+//	      System.out.println(zeile);
+//	    }
+//	    while (zeile != null);
+//
+//	    br.close();
 	}
 
 	public CaesarReader(int anzVerschiebung, Reader out) {

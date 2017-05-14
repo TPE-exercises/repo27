@@ -4,8 +4,8 @@ import java.io.*;
 
 public interface IFileEncryptor {
 	
-	public File encrypt(File sourceDirectory);
+	public File encrypt(File sourceDirectory) throws IOException;
 	
-	public File decrypt(File sourceDirectory);
+	public File decrypt(File sourceDirectory)throws IOException;
 
 }

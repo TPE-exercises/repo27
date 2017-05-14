@@ -19,8 +19,8 @@ public class CaesarMenue {
 		CaesarWriter caesarWriter  = new CaesarWriter(verschieben, new FileWriter(fileName));
 		CaesarReader caesarReader = new CaesarReader(verschieben, new FileReader(fileName));
 		System.out.println("Verschlüsselt:");
-		caesarWriter.write(eingabe, 0, eingabe.length());
-		caesarWriter.close();
+//		caesarWriter.write(eingabe, 0, eingabe.length());
+//		caesarWriter.close();
 		char [] cbuf = new char[eingabe.length()];
 		caesarReader.read(cbuf);
 		caesarReader.close();
