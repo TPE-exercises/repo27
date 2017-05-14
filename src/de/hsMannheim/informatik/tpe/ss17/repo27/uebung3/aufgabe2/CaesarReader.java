@@ -12,7 +12,7 @@ public class CaesarReader extends FilterReader {
 
 	public static void main(String[] args) throws IOException {
 		
-//		CaesarReader caesarReader = new CaesarReader(0, new FileReader("test.txt"));
+//		CaesarReader caesarReader = new CaesarReader(1, new FileReader("encrypt.txt"));
 //		BufferedReader br = new BufferedReader(caesarReader);
 //		String zeile = "";
 //
