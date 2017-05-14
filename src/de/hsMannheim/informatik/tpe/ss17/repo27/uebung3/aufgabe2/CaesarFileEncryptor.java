@@ -23,9 +23,9 @@ public class CaesarFileEncryptor implements IFileEncryptor {
 		int anzahlOrdner = 0;
 		int anzahlDatei = 0;
 		if (!file.exists()) {
-			System.err.println("Ordner leer oder Pfad falsch eingegeben (ACHTUNG \\-->\\\\)");
+			System.err.println("Ordner existiert nicht oder Pfad falsch eingegeben (ACHTUNG \\-->\\\\)");
 		} else {
-			System.out.println("Ordner nicht leer --> Überprüfe nach Elementen im Ordner");
+			System.out.println("Ordner existiert --> Überprüfe nach Elementen im Ordner");
 			if (file != null) {
 				for (int i = 0; i < fileArray.length; i++) {
 					System.out.print(fileArray[i]);
@@ -46,7 +46,7 @@ public class CaesarFileEncryptor implements IFileEncryptor {
 				}
 			}
 		}
-		System.out.println("Anzahl Ordner: " + anzahlOrdner);
+		System.out.println("Anzahl Unterordner: " + anzahlOrdner);
 		System.out.println("Anzahl Dateien: " + anzahlDatei);
 	}
 
