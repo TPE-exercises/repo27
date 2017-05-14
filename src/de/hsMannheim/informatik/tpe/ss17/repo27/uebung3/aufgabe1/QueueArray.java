@@ -24,7 +24,7 @@ public class QueueArray implements Queue,ADT {
 	public boolean enter(Object toEnter) {
 			try {
 				if(inputPosition >= this.values.length){
-					throw new OverflowException("ADT ist übergelaufen", toEnter);
+					throw new OverflowException("Overflow : ", toEnter);
 				}
 				else{
 					this.values[inputPosition] = toEnter;

@@ -31,7 +31,7 @@ public class StackArray implements Stack,ADT{
 					}
 				}
 				else{
-					throw new OverflowException("ADT is full there is no place for: " , toEnter );
+					throw new OverflowException("Overflow : " , toEnter );
 				}
 			}catch(OverflowException overflow){
 				if(exceptionFlag == 0){
