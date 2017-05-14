@@ -7,11 +7,11 @@ public class CaesarFileEncryptor implements IFileEncryptor {
 
 	static IFileEncryptor neu = new CaesarFileEncryptor();
 	static int anzVerschiebung = 2;
+	static String pfad = "C:\\Users\\ISTEGAL\\workspace\\test";
 	
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		String fileName = "C:\\Users\\ISTEGAL\\workspace\\test";
-		File f = new File(fileName);
+		File f = new File(pfad);
 		ueberpruefeVerzeichnis(f);
 
 	}
@@ -35,7 +35,8 @@ public class CaesarFileEncryptor implements IFileEncryptor {
 						
 						System.out.print(" (Datei)\n");
 						neu.encrypt(fileArray[i]);
-						neu.decrypt(neu.encrypt(fileArray[i]));
+						File encryptedFile = neu.encrypt(fileArray[i]);
+						neu.decrypt(encryptedFile);
 						anzahlDatei++;
 						
 					}
@@ -48,13 +49,19 @@ public class CaesarFileEncryptor implements IFileEncryptor {
 	
 	@Override
 	public File encrypt(File sourceDirectory) throws IOException {
-		String filename = sourceDirectory+"_encrypted"+".txt";
-//		File f = new File("C:\\Users\\ISTEGAL\\Desktop\\test\\test12.txt");
-		File f = new File(filename);
+		String newFolderName = this.pfad + "_encrypted";
+		String pfad = sourceDirectory+"";
+		int index = pfad.lastIndexOf("\\");
+		String fileName = pfad.substring(index + 1);
 		
+//		String filename = sourceDirectory+"_encrypted"+".txt";
+		
+//		File f = new File("C:\\Users\\ISTEGAL\\Desktop\\test\\test12.txt");
+		File f = new File(newFolderName);
+		f.mkdir();
 		FileReader fr = new FileReader(sourceDirectory);
 		BufferedReader br = new BufferedReader(fr);
-		CaesarWriter cw = new CaesarWriter(anzVerschiebung, new FileWriter(f));
+		CaesarWriter cw = new CaesarWriter(anzVerschiebung, new FileWriter(f+"\\"+fileName));
 		
 //		CaesarReader caesarReader = new CaesarReader(0, new FileReader("test.txt"));
 		String zeile = "";
@@ -73,21 +80,27 @@ public class CaesarFileEncryptor implements IFileEncryptor {
 
 	    br.close();
 	    cw.close();
-	
+	   
+	    File newFolderWithNewfile = new File(f+"\\"+fileName);
 
-		return f;
+		return newFolderWithNewfile;
 	}
 
 	@Override
 	public File decrypt(File sourceDirectory)  throws IOException {
-		String filename = sourceDirectory+"_decrypted"+".txt";
-		File f = new File(filename);
-
+		String newFolderName = this.pfad + "_decrypted";
+		String pfad = sourceDirectory+"";
+		int index = pfad.lastIndexOf("\\");
+		String fileName = pfad.substring(index + 1);
+		System.out.println(sourceDirectory);
+		File f = new File(newFolderName);
+		f.mkdir();
+		
 		FileReader fr = new FileReader(sourceDirectory);
 		BufferedReader br = new BufferedReader(fr);
 		CaesarReader cr = new CaesarReader(anzVerschiebung, new FileReader(sourceDirectory));
 		
-		CaesarWriter cw = new CaesarWriter(anzVerschiebung, new FileWriter(f));
+		CaesarWriter cw = new CaesarWriter(anzVerschiebung, new FileWriter(f+"\\"+fileName));
 		String zeile = "";
 		try{
 			 do
@@ -105,7 +118,9 @@ public class CaesarFileEncryptor implements IFileEncryptor {
 	    cr.close();
 	    cw.close();
 		
-		return f;
+	    File newFolderWithNewfile = new File(f+"\\"+fileName);
+	    
+		return newFolderWithNewfile;
 	}
 
 }
