@@ -7,17 +7,50 @@ public class CaesarFileEncryptor implements IFileEncryptor {
 
 	static IFileEncryptor neu = new CaesarFileEncryptor();
 	static int anzVerschiebung = 5;
-	static String pfad = "C:\\Users\\ISTEGAL\\workspace\\test";
-	static String newFolderNameDecrypted = pfad + "_decrypted";
-	static String newFolderNameEncrypted = pfad + "_encrypted";
-
+	static String pfad ="";// "C:\\Users\\Ufuk\\workspace\\test";
+	static String newFolderNameDecrypted = "";// pfad + "_decrypted";
+	static String newFolderNameEncrypted = "";// pfad + "_encrypted";
+	static CaesarFileEncryptor cfe = new CaesarFileEncryptor();
+	
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		File f = new File(pfad);
+		
+		System.out.println("Bitte geben Sie hier Ihr Verzeichnis-Pfad ein: ");
+		System.err.println("Bitte ACHTEN Sie bei der eingabe darauvf --> \\-->\\\\");
+		
+		String eingabe = readLine();
+		cfe.setPfad(eingabe);
+		File f = new File(cfe.getPfad());
 		ueberpruefeVerzeichnis(f);
 
 	}
-
+	public void setPfad(String pfad){
+		this.pfad = pfad;
+		setNewFolderNameEncrypted(pfad);
+		setNewFolderNameDecrypted(pfad);
+	}
+	
+	public String getPfad(){
+		return this.pfad;
+	}
+	
+	public void setNewFolderNameEncrypted(String pfad){
+		this.newFolderNameEncrypted=pfad+ "_encrypted";
+	}
+	
+	public String getNewFolderNameEncrypted(){
+		return this.newFolderNameEncrypted;
+	}
+	
+	public void setNewFolderNameDecrypted(String pfad){
+		this.newFolderNameDecrypted=pfad+ "_decrypted";
+	}
+	
+	public String getNewFolderNameDecrypted(){
+		return this.newFolderNameDecrypted;
+	}
+	
+	
 	public static void ueberpruefeVerzeichnis(File file) throws IOException {
 		File[] fileArray = file.listFiles();
 		int anzahlOrdner = 0;
@@ -32,7 +65,7 @@ public class CaesarFileEncryptor implements IFileEncryptor {
 					if (fileArray[i].isDirectory()) {
 						System.out.print(" (Ordner)\n");
 						anzahlOrdner++;
-						// ueberpruefeVerzeichnis(files[i]); //Unterverzeichnis
+						 ueberpruefeVerzeichnis(fileArray[i]); //Unterverzeichnis
 						// öffnen
 					} else {
 
@@ -57,7 +90,9 @@ public class CaesarFileEncryptor implements IFileEncryptor {
 		int index = pfad.lastIndexOf("\\");
 		String fileName = pfad.substring(index + 1);
 
-		File f = new File(newFolderNameEncrypted);
+//		File f = new File(newFolderNameEncrypted);
+		File f = new File(cfe.getNewFolderNameEncrypted());
+		
 		f.mkdir();
 		FileReader fr = new FileReader(sourceDirectory);
 		BufferedReader br = new BufferedReader(fr);
@@ -88,13 +123,15 @@ public class CaesarFileEncryptor implements IFileEncryptor {
 		int index = pfad.lastIndexOf("\\");
 		String fileName = pfad.substring(index + 1);
 
-		File f = new File(newFolderNameDecrypted);
+//		File f = new File(newFolderNameDecrypted);
+		File f = new File(cfe.getNewFolderNameDecrypted());
+
 		f.mkdir();
 		FileReader fr = new FileReader(sourceDirectory);
 		BufferedReader br = new BufferedReader(fr);
 
 		CaesarWriter cw = new CaesarWriter(0, new FileWriter(f + "\\" + fileName));
-		CaesarReader cr = new CaesarReader(anzVerschiebung, new FileReader(newFolderNameEncrypted + "\\" + fileName));
+		CaesarReader cr = new CaesarReader(anzVerschiebung, new FileReader(cfe.getNewFolderNameEncrypted() + "\\" + fileName));
 
 		String zeile = "";
 		try {
