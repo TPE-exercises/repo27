@@ -6,7 +6,7 @@ import java.io.*;
 public class CaesarFileEncryptor implements IFileEncryptor {
 
 	static IFileEncryptor neu = new CaesarFileEncryptor();
-	static int anzVerschiebung = 5;
+	static int anzVerschiebung = 0;//5;
 	static String pfad ="";// "C:\\Users\\Ufuk\\workspace\\test";
 	static String newFolderNameDecrypted = "";// pfad + "_decrypted";
 	static String newFolderNameEncrypted = "";// pfad + "_encrypted";
@@ -19,11 +19,26 @@ public class CaesarFileEncryptor implements IFileEncryptor {
 		System.err.println("Bitte ACHTEN Sie bei der eingabe darauvf --> \\-->\\\\");
 		
 		String eingabe = readLine();
+		
+		System.out.println("Bitte geben Sie die Anzahl dr Verschiebung ein!");
+		int anzahl = readInt();
+		cfe.setAnzahl(anzahl);
 		cfe.setPfad(eingabe);
 		File f = new File(cfe.getPfad());
 		ueberpruefeVerzeichnis(f);
 
 	}
+	
+	public void setAnzahl(int anz){
+		this.anzVerschiebung=anz;
+	}
+	
+	public int getAnzahl(){
+		return this.anzVerschiebung;
+	}
+	
+	
+	
 	public void setPfad(String pfad){
 		this.pfad = pfad;
 		setNewFolderNameEncrypted(pfad);
@@ -96,7 +111,7 @@ public class CaesarFileEncryptor implements IFileEncryptor {
 		f.mkdir();
 		FileReader fr = new FileReader(sourceDirectory);
 		BufferedReader br = new BufferedReader(fr);
-		CaesarWriter cw = new CaesarWriter(anzVerschiebung, new FileWriter(f + "\\" + fileName));
+		CaesarWriter cw = new CaesarWriter(getAnzahl(), new FileWriter(f + "\\" + fileName));
 		String zeile = "";
 		try {
 			do {
@@ -131,7 +146,7 @@ public class CaesarFileEncryptor implements IFileEncryptor {
 		BufferedReader br = new BufferedReader(fr);
 
 		CaesarWriter cw = new CaesarWriter(0, new FileWriter(f + "\\" + fileName));
-		CaesarReader cr = new CaesarReader(anzVerschiebung, new FileReader(cfe.getNewFolderNameEncrypted() + "\\" + fileName));
+		CaesarReader cr = new CaesarReader(getAnzahl(), new FileReader(cfe.getNewFolderNameEncrypted() + "\\" + fileName));
 
 		String zeile = "";
 		try {

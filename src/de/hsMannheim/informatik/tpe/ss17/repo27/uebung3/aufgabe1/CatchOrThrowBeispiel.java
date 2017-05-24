@@ -17,7 +17,7 @@ public class CatchOrThrowBeispiel {
 			
 		}
 		catch(UnderflowException underflow1){
-			println("Das ist die erste OverflowException.");
+			println("Das ist die erste UnderflowException.");
 			throw underflow1;
 		}
 			}

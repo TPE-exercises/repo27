@@ -113,6 +113,7 @@ public class Main {
 			println("Welche länge soll ihre ADT haben?");
 			int sizeDynamic = readInt();
 			
+			
 			 ADT queueWithArray = new QueueArray(sizeDynamic);
 			 ADT queueWithLinkedList = new QueueList(sizeDynamic);
 

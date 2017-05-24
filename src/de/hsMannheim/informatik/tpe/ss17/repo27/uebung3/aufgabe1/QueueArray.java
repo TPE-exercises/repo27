@@ -89,7 +89,7 @@ public class QueueArray implements Queue,ADT {
 
 	@Override
 	public Object front(){
-			return values[outputPosition]; 
+			return values[0]; 
 			}
 		
 
