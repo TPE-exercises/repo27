@@ -1,0 +1,25 @@
+1: Safety Hazards 
+
+, treten auf, wenn zum Beispiel ein Thread eine Variable liest und diese verändert aber bevor er diese wieder in den Speicher schreiben kann ein 
+anderer Thread die Varaible liest und mit dem alten / noch nicht akutalisierten Wert weiterrechnet. Dadurch verhält sich das Programm 
+in Anwesenheit von mehreren Thread´s nicht mehr wie erwartet / korrekt.
+Dieses Problem kann umgangen werden indem man, wenn mehrere Thread´s gleichzeitig auf Resoursen zugreifen wollen, sie synchornisiert werden müssen.
+Ein Beispiel : RaceCondition
+
+2. Liveness	Hazards	
+
+, treten auf, wenn ein Programm mit mehreren Threads in einen Zustand gerät, bei dem es keine Fortschritte mehr machen kann. Im "Livelock" befindet 
+sich ein Programm wenn das Programm weiter läuft doch durch Thread´s keinen wirklichen Fortschritt machen, und sozusagen ein einer schleife hängenbleiben.
+Im "Deadlock" befinden sich die Thread´s welche dauerhaft durch synchronisierung bzw. monitoring dafür sorgt, dass der Thread nicht weiterlaufen
+kann. Bei "Starvation" wird ein Thread nicht weiter aufgeführt und durch das permanetne warten, werden immer weitere Thread "vorgelassen" und somit
+wird der Thread erst sehr viel später oder ls letztes ausgeführt.
+Beispiel 1. : Livelock
+Beipsiel 2. : Deadlock
+Beipsiel 3. : Starvation
+
+3. Performance Hazards
+
+, treten auf, auch wenn das Programm vollständig und fehlerlos funktionier, dennoch ist Leistung nicht besser als wäre das Programm ohne Thread´s 
+geschrieben. Dieses Problem ensteht, wenn dieThread´s zu kleine Aufgaben bekommen und somit das erstellen und verwalten der Thread´s mehr
+rechenleistung benötigt als die Tätigkeit der Threads an sich.
+Ein Beispiel ist der Quicksort
