@@ -16,6 +16,9 @@ public class QuickSortParallel extends Thread implements SortAlgorithm {
 		
 	}
 	
+	/**
+	 *unsorted array was sorted
+	 */
 	public void sort(Comparable[] array) {
 		startZeit = System.currentTimeMillis();
 		this.unsortedArray = array;
@@ -57,14 +60,21 @@ public class QuickSortParallel extends Thread implements SortAlgorithm {
 			}
 		}
 	}
-	
+	/**
+	 * Second Konstructor with 3 parameter
+	 * @param unsortedArray - Array to be sorted
+	 * @param lowerElement - left element of the array
+	 * @param upperElement - right element of the array
+	 */
 	public QuickSortParallel(Comparable[] unsortedArray, int lowerElement, int upperElement){
 		this.unsortedArray = unsortedArray;
 		this.lowerElement = lowerElement;
 		this.upperElement = upperElement;
 	}
 	
-
+	/**
+	 * Thread was startet
+	 */
 	public void run(){
 		quickSortParallel(this.unsortedArray,this.lowerElement,this.upperElement);	
 		
@@ -116,7 +126,11 @@ public class QuickSortParallel extends Thread implements SortAlgorithm {
 		unsortedArray[number2] = temp;
 
 	}
-
+	
+	/**
+	 * output Sorted Array with 
+	 * @param array - Sorted array
+	 */
 	public void printSortedArray(Comparable[] array) {
 		System.out.print("Sortiertes Array { ");
 		for (int i = 0; i < array.length; i++) {
@@ -132,6 +146,9 @@ public class QuickSortParallel extends Thread implements SortAlgorithm {
 		System.out.println("Join: " + joinings);
 	}
 	
+	/**
+	 *  write Comparable Array in String
+	 */
 	public String toString(){
 		String s ="";
 		for(int i = 0; i < unsortedArray.length; i++) {

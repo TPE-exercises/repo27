@@ -12,6 +12,9 @@ public class QuickSortSequentiell implements SortAlgorithm {
 	public QuickSortSequentiell() {
 	}
 
+	/**
+	 *unsorted array was sorted
+	 */
 	public void sort(Comparable[] array) {
 		startZeit = System.currentTimeMillis();
 		this.array = array;
@@ -88,7 +91,11 @@ public class QuickSortSequentiell implements SortAlgorithm {
 		unsortedArray[number2] = temp;
 
 	}
-
+	
+	/**
+	 * output Sorted Array with 
+	 * @param array - Sorted array
+	 */
 	public void printSortedArray(Comparable[] array) {
 		System.out.print("Sortiertes Array { ");
 		for (int i = 0; i < array.length; i++) {
@@ -103,6 +110,9 @@ public class QuickSortSequentiell implements SortAlgorithm {
 	}
 	
 	
+	/**
+	 *  write Comparable Array in String
+	 */
 	public String toString(){
 		String s ="";
 		for(int i = 0; i < array.length; i++) {
