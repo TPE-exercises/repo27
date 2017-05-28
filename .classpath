@@ -2,5 +2,10 @@
 <classpath>
 	<classpathentry excluding="de/hsMannheim/informatik/tpe/ss17/repo27/uebung2/teil1/test.java" kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+<<<<<<< HEAD
+=======
+	<classpathentry kind="lib" path="C:/Users/ISTEGAL/workspace/gdi16.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+>>>>>>> branch 'master' of https://github.com/TPE-exercises/repo27.git
 	<classpathentry kind="output" path="bin"/>
 </classpath>
