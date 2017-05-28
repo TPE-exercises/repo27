@@ -2,6 +2,7 @@
 <classpath>
 	<classpathentry excluding="de/hsMannheim/informatik/tpe/ss17/repo27/uebung2/teil1/test.java" kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Users/Ufuk/workspace/g2-9/GDI 1IB/gdi16.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ISTEGAL/workspace/gdi16.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -7,7 +7,7 @@ public class QuickSortMenue {
 		QuickSortSequentiell qss = new QuickSortSequentiell();
 		QuickSortParallel qsp = new QuickSortParallel();
 
-		Comparable[] array = { 10, 1, 9, 2, 8, 3, 7, 4, 6, 5 };
+		Integer [] array = { 10, 1, 100, 9, 2, 8, 3, 7, 4, 6, 5 };
 
 		// output unsorted array
 		System.out.print("Unsortiertes Array { ");
@@ -17,10 +17,16 @@ public class QuickSortMenue {
 		System.out.print("}");
 		System.out.println("");
 		
-		qsp.sort(array);
-
-		// output sorted array
-//		qs.printSortedArray(array);
+		System.out.println("____________________________");
 		
+		qss.sort(array);
+		qsp.sort(array);
+		System.out.println("test " + qss.toString());
+		// output sorted array
+		System.out.println("Sorted Sequentiell: ");
+		qss.printSortedArray(array);
+		System.out.println("____________________________");
+		System.out.println("Sorted Parallel");
+		qsp.printSortedArray(array);
 	}
 }
