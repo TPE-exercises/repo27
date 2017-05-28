@@ -3,8 +3,8 @@ package de.hsMannheim.informatik.tpe.ss17.repo27.uebung4.aufgabe2;
 public class QuickSortParallel extends Thread implements SortAlgorithm {
 
 	private Comparable[] unsortedArray;
-	private double startZeit = 0.0;
-	private double endZeit = 0.0;
+	private  long startZeit = 0l;
+	private  long endZeit = 0;
 	private int vergleichen = 0;
 	private int rekursionsAufrufe = 0;
 	private int vertauschen = 0;
@@ -59,6 +59,7 @@ public class QuickSortParallel extends Thread implements SortAlgorithm {
 				
 			}
 		}
+		endZeit= System.currentTimeMillis();
 	}
 	/**
 	 * Second Konstructor with 3 parameter
@@ -77,7 +78,6 @@ public class QuickSortParallel extends Thread implements SortAlgorithm {
 	 */
 	public void run(){
 		quickSortParallel(this.unsortedArray,this.lowerElement,this.upperElement);	
-		
 	}
 
 	/**

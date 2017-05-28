@@ -3,8 +3,8 @@ package de.hsMannheim.informatik.tpe.ss17.repo27.uebung4.aufgabe2;
 public class QuickSortSequentiell implements SortAlgorithm {
 
 	private Comparable[] array;
-	private double startZeit = 0.0;
-	private double endZeit = 0.0;
+	private  long startZeit = 0l;
+	private  long endZeit = 0l;
 	private int vergleichen = 0;
 	private int rekursionsAufrufe = 0;
 	private int vertauschen = 0;
@@ -25,7 +25,7 @@ public class QuickSortSequentiell implements SortAlgorithm {
 		}
 		quickSort(array, 0, array.length - 1);
 		
-		endZeit = System.currentTimeMillis() - startZeit;
+		
 		}
 
 	/**
@@ -43,6 +43,7 @@ public class QuickSortSequentiell implements SortAlgorithm {
 			quickSort(unsortedArray, lowerElement, i - 1);
 			quickSort(unsortedArray, i + 1, upperElement);
 		}
+		endZeit = System.currentTimeMillis();
 	}
 
 	/**
