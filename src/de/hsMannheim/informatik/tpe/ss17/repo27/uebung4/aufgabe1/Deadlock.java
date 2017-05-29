@@ -1,4 +1,4 @@
-package de.hsMannheim.informatik.tpe.ss17.repo27.uebung4.aufgabe1;
+package de.hsMannheim.informatik.tpe.ss17.repo27.uebung4.aufgabe1; 
 
 public class Deadlock {
 

@@ -3,13 +3,15 @@ package de.hsMannheim.informatik.tpe.ss17.repo27.uebung4.aufgabe2;
 public class QuickSortParallel extends Thread implements SortAlgorithm {
 
 	private Comparable[] unsortedArray;
-	private  long startZeit = 0l;
-	private  long endZeit = 0;
-	private int vergleichen = 0;
-	private int rekursionsAufrufe = 0;
-	private int vertauschen = 0;
-	private int thread;
-	private int joinings;
+//	private  long startZeit = 0l;
+//	private  long endZeit = 0l;
+	private  double startZeit = 0.0;
+	private  double endZeit = 0.0;
+	private static int vergleichen = 0;
+	private static int rekursionsAufrufe = 0;
+	private static int vertauschen = 0;
+	private static int thread;
+	private static int joinings;
 	private int upperElement,lowerElement;
 	
 	public QuickSortParallel(){
@@ -46,7 +48,7 @@ public class QuickSortParallel extends Thread implements SortAlgorithm {
 			
 			Thread lowerThread = new Thread (new QuickSortParallel(unsortedArray,lowerElement, i - 1));
 			Thread upperThread = new Thread (new QuickSortParallel(unsortedArray,i + 1,upperElement));
-			thread = thread +2;
+			thread +=2;
 			lowerThread.start();
 			upperThread.start();
 			
@@ -71,6 +73,7 @@ public class QuickSortParallel extends Thread implements SortAlgorithm {
 		this.unsortedArray = unsortedArray;
 		this.lowerElement = lowerElement;
 		this.upperElement = upperElement;
+		
 	}
 	
 	/**
@@ -91,7 +94,7 @@ public class QuickSortParallel extends Thread implements SortAlgorithm {
 	public int zerlege(Comparable[] unsortedArray, int lowerElement, int upperElement) {
 		int pivot = upperElement; // Index of the rightmost element.
 		int index = lowerElement;// Index of the leftmost element.
-
+		
 		for (int pointer = lowerElement; pointer < upperElement; pointer++) {
 			vergleichen++;
 			// elements are only swapped if this condition is true

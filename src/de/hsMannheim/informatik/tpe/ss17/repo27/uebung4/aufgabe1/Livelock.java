@@ -12,7 +12,7 @@ public class Livelock {
 			this.laesstVor = laesstVor;
 		}
 
-		public void openDoor(Warteschlange warteschlange, Person otherPerson) {
+		public void geheInWarteschlange(Warteschlange warteschlange, Person otherPerson) {
 
 			while (stehtInSchlange()) {
 				// Wenn jemand anderes vor einem steht wartet die Person solange.
@@ -82,14 +82,14 @@ public class Livelock {
 		new Thread() {
 			@Override
 			public void run() {
-				p1.openDoor(s1, p2);
+				p1.geheInWarteschlange(s1, p2);
 			}
 		}.start();
 
 		new Thread() {
 			@Override
 			public void run() {
-				p2.openDoor(s1, p1);
+				p2.geheInWarteschlange(s1, p1);
 			}
 		}.start();
 	}

@@ -3,8 +3,10 @@ package de.hsMannheim.informatik.tpe.ss17.repo27.uebung4.aufgabe2;
 public class QuickSortSequentiell implements SortAlgorithm {
 
 	private Comparable[] array;
-	private  long startZeit = 0l;
-	private  long endZeit = 0l;
+//	private  long startZeit = 0l;
+//	private  long endZeit = 0l;
+	private  double startZeit = 0.0;
+	private  double endZeit = 0.0;
 	private int vergleichen = 0;
 	private int rekursionsAufrufe = 0;
 	private int vertauschen = 0;
