@@ -4,15 +4,15 @@ import java.util.*;
 
 public class BTreeNode {
 
-	private int maxValues;
+	private int maxKeys;
 	private Comparable[] keys;
 	private BTreeNode[] children;
 	private BTreeNode parent = null;
 
 	BTreeNode(int order) {
-		maxValues = order * 2;
-		keys = new Comparable[maxValues + 1];
-		children = new BTreeNode[maxValues + 2];
+		maxKeys = order * 2;
+		keys = new Comparable[maxKeys + 1];
+		children = new BTreeNode[maxKeys + 2];
 	}
 
 	BTreeNode(int order, BTreeNode parent) {
@@ -52,7 +52,7 @@ public class BTreeNode {
 	 * @return position of pointer with the "value"
 	 */
 	private int getInsertPosition(Comparable value) {
-		for (int i = 0; i < maxValues + 1; i++) {
+		for (int i = 0; i < maxKeys + 1; i++) {
 			if (children[i].keys[0] == value) {
 				return i;
 			}
@@ -69,7 +69,7 @@ public class BTreeNode {
 	 *            to insert
 	 */
 	public void addPosition(BTreeNode toInsert) {
-		for (int i = 0; i < maxValues + 2; i++) {
+		for (int i = 0; i < maxKeys + 2; i++) {
 			if (children[i] == null) {
 				children[i] = toInsert;
 				sortPosition();
@@ -83,7 +83,7 @@ public class BTreeNode {
 	 * @return true if one value too much in node
 	 */
 	private boolean isFull() {
-		if (keys[maxValues] != null)
+		if (keys[maxKeys] != null)
 			return true;
 		else
 			return false;
@@ -97,22 +97,22 @@ public class BTreeNode {
 	 * @return null, if there was an parent before, else return node
 	 */
 	public BTreeNode burst(BTreeNode dummy) {
-		int mid = maxValues / 2;
+		int mid = maxKeys / 2;
 		if (parent != null) {
 			// if there is already a parent, the full node gets split
-			BTreeNode leftNode = new BTreeNode(maxValues / 2, parent);
-			BTreeNode rightNode = new BTreeNode(maxValues / 2, parent);
+			BTreeNode leftNode = new BTreeNode(maxKeys / 2, parent);
+			BTreeNode rightNode = new BTreeNode(maxKeys / 2, parent);
 			// add values to nodes
 			for (int i = 0; i < mid; i++) {
 				leftNode.insert(keys[i], false, dummy);
 			}
-			for (int i = mid + 1; i < maxValues + 1; i++) {
+			for (int i = mid + 1; i < maxKeys + 1; i++) {
 				rightNode.insert(keys[i], false, dummy);
 			}
 			// add pointer to new nodes
-			for (int i = 0; i < maxValues + 2; i++) {
+			for (int i = 0; i < maxKeys + 2; i++) {
 				if (children[i] == null) {
-					i = maxValues + 2;
+					i = maxKeys + 2;
 				} else if (children[i].keys[0].compareTo(keys[mid]) < 0) {
 					leftNode.addPosition(children[i]);
 					children[i].parent = leftNode;
@@ -131,19 +131,19 @@ public class BTreeNode {
 
 		} else {
 			// if there is no parent, node becomes the new root
-			BTreeNode leftNode = new BTreeNode(maxValues / 2, dummy);
-			BTreeNode rightNode = new BTreeNode(maxValues / 2, dummy);
+			BTreeNode leftNode = new BTreeNode(maxKeys / 2, dummy);
+			BTreeNode rightNode = new BTreeNode(maxKeys / 2, dummy);
 			// add values to new nodes
 			for (int i = 0; i < mid; i++) {
 				leftNode.insert(keys[i], false, dummy);
 			}
-			for (int i = mid + 1; i < maxValues + 1; i++) {
+			for (int i = mid + 1; i < maxKeys + 1; i++) {
 				rightNode.insert(keys[i], false, dummy);
 			}
 			// add pointer to new nodes
-			for (int i = 0; i < maxValues + 2; i++) {
+			for (int i = 0; i < maxKeys + 2; i++) {
 				if (children[i] == null) {
-					i = maxValues + 2;
+					i = maxKeys + 2;
 				} else if (children[i].keys[0].compareTo(keys[mid]) < 0) {
 					leftNode.addPosition(children[i]);
 					children[i].parent = leftNode;
@@ -223,7 +223,7 @@ public class BTreeNode {
 	 * sort pointer of a node with insertionsort
 	 */
 	private void sortPosition() {
-		for (int i = maxValues; i > 0; i--) {
+		for (int i = maxKeys; i > 0; i--) {
 			if (children[i] != null && children[i - 1].keys[0].compareTo(children[i].keys[0]) > 0) {
 				BTreeNode temp = children[i - 1];
 				children[i - 1] = children[i];
@@ -244,7 +244,7 @@ public class BTreeNode {
 	 */
 	public boolean insert(Comparable values2, boolean burst, BTreeNode node) {
 		if (children[0] == null || burst) {
-			for (int i = 0; i < maxValues + 1; i++) {
+			for (int i = 0; i < maxKeys + 1; i++) {
 				if (keys[i] == null) {
 					keys[i] = values2;
 					insertionSort();
@@ -256,7 +256,7 @@ public class BTreeNode {
 				}
 			}
 		} else {
-			for (int i = 0; i < maxValues + 1; i++) {
+			for (int i = 0; i < maxKeys + 1; i++) {
 				if (keys[i] == null || keys[i].compareTo(values2) > 0) {
 					return children[i].insert(values2, false, node);
 				}
@@ -269,11 +269,11 @@ public class BTreeNode {
 	 * sorts values by insertion sort
 	 */
 	public void insertionSort() {
-		int lastInsertion = maxValues;
-		for (int i = 0; i < maxValues + 1; i++) {
+		int lastInsertion = maxKeys;
+		for (int i = 0; i < maxKeys + 1; i++) {
 			if (keys[i] == null) {
 				lastInsertion = i - 1;
-				i = maxValues + 1;
+				i = maxKeys + 1;
 			}
 		}
 		for (int i = lastInsertion; i > 0; i--) {
@@ -292,7 +292,7 @@ public class BTreeNode {
 	 */
 	public String toString() {
 		String ret = "(";
-		for (int i = 0; i < maxValues; i++) {
+		for (int i = 0; i < maxKeys; i++) {
 			if (keys[i] != null) {
 				ret = ret + keys[i] + " ";
 			}
